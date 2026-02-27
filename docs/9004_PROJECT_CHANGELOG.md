@@ -142,3 +142,10 @@
 - 摘要：完成安全與 Runbook 定稿，補齊權限、事件處理與故障排查規範。
 - 影響檔案：`docs/5001_SECURITY_RULES.md`、`docs/5002_ACCESS_CONTROL_MATRIX.md`、`docs/6001_RUNBOOK_TROUBLESHOOTING.md`、`docs/6002_RELEASE_ROLLBACK_CHECKLIST.md`、`docs/9001_EXECUTION_PLAN.md`、`docs/9009_STEP5_SECURITY_RUNBOOK_REPORT.md`、`code.md`、`docs/9004_PROJECT_CHANGELOG.md`
 - 備註：Step 5 狀態改為完成；計畫文件 Step 1~5 全數完成。
+
+### CHG-20260227-11
+- 日期：2026-02-27
+- 階段：Release
+- 摘要：新增 Step 5 完成之 GitHub Release note 草稿文件。
+- 影響檔案：`docs/9010_RELEASE_NOTE_STEP5_DRAFT.md`、`docs/9004_PROJECT_CHANGELOG.md`
+- 備註：可直接複製草稿內容建立 GitHub Draft Release。
