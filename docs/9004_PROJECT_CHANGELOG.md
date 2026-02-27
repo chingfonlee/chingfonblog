@@ -107,3 +107,10 @@
 - 摘要：初始化本地 Git repository、建立 `main` 並設定 GitHub remote，準備第一次 commit。
 - 影響檔案：`.git/`、`docs/9007_STEP4_PROGRESS_REPORT.md`、`docs/9004_PROJECT_CHANGELOG.md`
 - 備註：remote 設為 `https://github.com/chingfonlee/chingfonblog.git`。
+
+### CHG-20260227-06
+- 日期：2026-02-27
+- 階段：Step 4
+- 摘要：建立 Deploy Preview 測試分支並補充測試 PR 執行紀錄。
+- 影響檔案：`docs/4004_NETLIFY_PLATFORM_VALIDATION_CHECKLIST.md`、`docs/9004_PROJECT_CHANGELOG.md`
+- 備註：測試分支為 `test/step4-deploy-preview`，待 push 後建立 PR。

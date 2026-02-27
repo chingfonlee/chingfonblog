@@ -30,6 +30,12 @@
    - [ ] draft 文章詳細頁可見
    - [ ] 回應含 preview noindex 規則
 
+### 測試 PR 執行紀錄（本輪）
+- 測試分支：`test/step4-deploy-preview`
+- 基準分支：`main`
+- 目的：觸發 Netlify Deploy Preview 並驗證 preview 環境行為。
+- PR 連結：待建立（建立後回填）。
+
 ## C. Production 驗證
 1. 合併測試 PR 到 `main`。
 2. 進入 Netlify Deploys 檢視最新 Production deploy。
