@@ -128,3 +128,17 @@
 - 摘要：完成 Deploy Preview 與 Production 平台層驗證（連結可達、預期行為正確）。
 - 影響檔案：`docs/4004_NETLIFY_PLATFORM_VALIDATION_CHECKLIST.md`、`docs/9007_STEP4_PROGRESS_REPORT.md`、`docs/9004_PROJECT_CHANGELOG.md`
 - 備註：Step 4 尚待 Identity / Git Gateway 與 `/admin` 流程驗證。
+
+### CHG-20260227-09
+- 日期：2026-02-27
+- 階段：Step 4
+- 摘要：完成 `/admin` Draft -> Review -> PR 驗證（PR #5）並關閉 Step 4。
+- 影響檔案：`docs/4004_NETLIFY_PLATFORM_VALIDATION_CHECKLIST.md`、`docs/9001_EXECUTION_PLAN.md`、`docs/9007_STEP4_PROGRESS_REPORT.md`、`docs/9004_PROJECT_CHANGELOG.md`
+- 備註：PR #5 已合併至 `main`；Deploy Preview 與 Production 行為符合規範（draft 僅 preview 可見）。
+
+### CHG-20260227-10
+- 日期：2026-02-27
+- 階段：Step 5
+- 摘要：完成安全與 Runbook 定稿，補齊權限、事件處理與故障排查規範。
+- 影響檔案：`docs/5001_SECURITY_RULES.md`、`docs/5002_ACCESS_CONTROL_MATRIX.md`、`docs/6001_RUNBOOK_TROUBLESHOOTING.md`、`docs/6002_RELEASE_ROLLBACK_CHECKLIST.md`、`docs/9001_EXECUTION_PLAN.md`、`docs/9009_STEP5_SECURITY_RUNBOOK_REPORT.md`、`code.md`、`docs/9004_PROJECT_CHANGELOG.md`
+- 備註：Step 5 狀態改為完成；計畫文件 Step 1~5 全數完成。

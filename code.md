@@ -32,6 +32,7 @@
 - `docs/9006_STEP3_AUDIT_REPORT.md`（以及最新 Step 審核報告）
 - `docs/9007_STEP4_PROGRESS_REPORT.md`（以及最新 Step 進度/審核報告）
 - `docs/9008_STEP4_LOCAL_VALIDATION_REPORT.md`（以及最新 Step 進度/審核報告）
+- `docs/9009_STEP5_SECURITY_RUNBOOK_REPORT.md`（以及最新 Step 進度/審核報告）
 
 ## 規則優先順序
 1. 使用者當前指令

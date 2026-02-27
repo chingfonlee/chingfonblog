@@ -11,6 +11,8 @@
 - 已補齊 Astro 最小執行骨架：`astro.config.mjs`、`tsconfig.json`、最小 layout/pages、npm scripts。
 - 已完成 `astro check` 與 `astro build` 本地驗證。
 - 已完成 `netlify.toml` 與本地 production / preview 驗證流程校準。
+- 已完成 `/admin` 實流程驗證（Draft -> In Review -> PR -> Deploy Preview）。
+- 已完成 PR #5 合併與 production 行為驗證（draft 路由在 production 為 404）。
 
 ## 安裝結果
 - `astro@5.18.0`
@@ -25,8 +27,7 @@
 
 ## 尚未完成項目
 - 尚未安裝 sitemap / RSS / Atom 相關套件。
-- 尚未完成 Identity / Git Gateway 平台層驗證。
-- 尚未完成 `/admin` 登入與 Draft -> PR 實際操作驗證。
+- 尚未完成 Step 5（安全與 Runbook 定稿）文件更新。
 
 ## 本地驗證結果
 - `ASTRO_TELEMETRY_DISABLED=1 npm run check`：通過（0 errors）。
@@ -37,11 +38,13 @@
 - 實測發現 `slug` 為 Astro Content Collections 保留欄位，需以 `entry.slug` 取用，不可放入 `data` schema 驗證。
 
 ## 下一步
-- 評估是否需要新增 preview / production 專用驗證 scripts。
-- 進入 Netlify 平台層驗證（Deploy Preview / Production / Identity / Git Gateway）。
-- 之後再決定是否安裝 `@astrojs/sitemap`、`@astrojs/rss`、`netlify-cli`。
+- 進入 Step 5：完成安全策略與 runbook 定稿。
+- 規劃 sitemap / RSS / Atom 套件安裝與整合時點。
+- 依需求新增 CI 自動驗證與 branch protection 落地設定。
 
 ## 平台層驗證進展（本輪）
 - Deploy Preview：已驗證通過。
 - Production deploy：已驗證通過。
-- 待完成：Identity / Git Gateway 啟用與 `/admin` 實流程驗證。
+- Identity / Git Gateway：已啟用並可支持 Decap 送審產生 PR。
+- `/admin` 流程：已完成驗證（PR #5）。
+- 結論：Step 4 已完成，可進入 Step 5。

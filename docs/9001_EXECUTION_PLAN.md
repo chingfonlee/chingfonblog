@@ -38,31 +38,31 @@
   - [x] Cloudinary URL 驗證生效
   - [x] 欄位缺漏或型別錯誤可被阻擋
 
-### Step 4：部署流程校準（Netlify）（進行中：2026-02-27）
+### Step 4：部署流程校準（Netlify）（已完成：2026-02-27）
 - 動作：對齊 Deploy Preview/Production/branch deploy 的 context 規則與檢查流程。
 - 交付物：可操作的部署流程清單與驗收結果。
 - 審核點：
-  - [ ] PR 觸發 Deploy Preview
-  - [ ] main 觸發 Production deploy
-  - [ ] Identity/Git Gateway 路徑與安全策略一致
+  - [x] PR 觸發 Deploy Preview
+  - [x] main 觸發 Production deploy
+  - [x] Identity/Git Gateway 路徑與安全策略一致
 
-### Step 5：安全與 Runbook 定稿
+### Step 5：安全與 Runbook 定稿（已完成：2026-02-27）
 - 動作：將事件處理、故障排查、回滾與稽核流程對齊實作現況。
 - 交付物：更新後 `5001`、`6001` 實用版 runbook。
 - 審核點：
-  - [ ] 撤權與回滾流程可執行
-  - [ ] 常見故障有對應排查步驟
-  - [ ] 分支保護與審核要求明確
+  - [x] 撤權與回滾流程可執行
+  - [x] 常見故障有對應排查步驟
+  - [x] 分支保護與審核要求明確
 
 ## 里程碑與確認機制
 - M1：Step 1 完成並核可。
 - M2：Step 2 完成並核可。
-- M3：Step 3~5 逐步完成並核可。
+- M3：Step 3~5 已完成並核可。
 - 每個里程碑完成後，先回報「變更摘要 + 審核結果」，經你確認再進下一步。
 
 ## 本次先行審核結果
-- 狀態：Step 1、Step 2、Step 3 已完成；Step 4 進行中。
-- 備註：Step 1 見 `docs/9003_STEP1_AUDIT_REPORT.md`；Step 2 見 `docs/9005_STEP2_AUDIT_REPORT.md`；Step 3 見 `docs/9006_STEP3_AUDIT_REPORT.md`；Step 4 進度見 `docs/9007_STEP4_PROGRESS_REPORT.md`，本地校準結果見 `docs/9008_STEP4_LOCAL_VALIDATION_REPORT.md`，平台連結驗證見 `docs/4004_NETLIFY_PLATFORM_VALIDATION_CHECKLIST.md`。
+- 狀態：Step 1、Step 2、Step 3、Step 4、Step 5 已完成。
+- 備註：Step 1 見 `docs/9003_STEP1_AUDIT_REPORT.md`；Step 2 見 `docs/9005_STEP2_AUDIT_REPORT.md`；Step 3 見 `docs/9006_STEP3_AUDIT_REPORT.md`；Step 4 見 `docs/9007_STEP4_PROGRESS_REPORT.md`、`docs/9008_STEP4_LOCAL_VALIDATION_REPORT.md`、`docs/4004_NETLIFY_PLATFORM_VALIDATION_CHECKLIST.md`；Step 5 見 `docs/9009_STEP5_SECURITY_RUNBOOK_REPORT.md`。
 
 ## 文件互相引用
 - `/code` 執行前置規則、必讀清單與檢查項目，請參考專案根目錄 `code.md`。

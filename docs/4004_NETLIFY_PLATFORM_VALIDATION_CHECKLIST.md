@@ -4,10 +4,10 @@
 範圍：涵蓋 site 建立、Deploy Preview、Production、Identity、Git Gateway、/admin 驗證。
 
 ## 前置確認
-- [ ] Git repository 已連接到 Netlify site。
-- [ ] Netlify site 的 build command 為 `npm run build:netlify`。
-- [ ] Publish directory 為 `dist`。
-- [ ] 自訂網域若已啟用，HTTPS 已正常。
+- [x] Git repository 已連接到 Netlify site。
+- [x] Netlify site 的 build command 為 `npm run build:netlify`。
+- [x] Publish directory 為 `dist`。
+- [x] 自訂網域若已啟用，HTTPS 已正常。
 - [ ] 已知風險：Netlify Identity 與 Git Gateway 官方文件已標示 deprecated；本專案仍依既定方案驗證現行流程。
 
 ## A. Site 與 Build 設定
@@ -69,16 +69,21 @@
 6. 如平台要求，補齊 Git provider access token。
 
 ## F. /admin 驗證
-1. 開啟 `https://YOUR_SITE/admin/`。
+1. 開啟 `https://leechingfon.netlify.app/admin/`。
 2. 使用受邀 Identity 帳號登入。
 3. 驗證 Decap 可正常載入 collection。
 4. 建立一篇測試草稿。
 5. 送出 Review。
 6. 驗證：
-   - [ ] 成功建立 Draft
-   - [ ] 成功送審
-   - [ ] 產生對應 PR
-   - [ ] PR 產生 Deploy Preview
+   - [x] 成功建立 Draft
+   - [x] 成功送審
+   - [x] 產生對應 PR
+   - [x] PR 產生 Deploy Preview
+
+### /admin 驗證紀錄（PR #5）
+- PR：`https://github.com/chingfonlee/chingfonblog/pull/5`
+- Deploy Preview：`https://deploy-preview-5--leechingfon.netlify.app/`
+- 結果：`/posts/test/`、`/posts/test-again/` 在 preview 可見；production 為 `404`（draft 不上線）。
 
 ## G. 權限與稽核驗證
 1. 進入 `Project configuration > Identity > Users`。
@@ -92,9 +97,9 @@
 ## H. 驗收結論
 - [x] PR 觸發 Deploy Preview
 - [x] `main` 觸發 Production deploy
-- [ ] Identity / Git Gateway 啟用順序正確
-- [ ] `/admin` 可登入並完成 Draft -> PR 流程
-- [ ] Draft 在 preview 可見、在 production 不可見
+- [x] Identity / Git Gateway 啟用順序正確
+- [x] `/admin` 可登入並完成 Draft -> PR 流程
+- [x] Draft 在 preview 可見、在 production 不可見
 
 ## 備註
 - Identity 與 Git Gateway 依 Netlify 官方文件屬 deprecated 功能；本專案目前僅驗證既有方案是否仍可運作。
