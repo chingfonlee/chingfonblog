@@ -62,7 +62,7 @@
 
 ## 本次先行審核結果
 - 狀態：Step 1、Step 2、Step 3 已完成；Step 4 進行中。
-- 備註：Step 1 見 `docs/9003_STEP1_AUDIT_REPORT.md`；Step 2 見 `docs/9005_STEP2_AUDIT_REPORT.md`；Step 3 見 `docs/9006_STEP3_AUDIT_REPORT.md`；Step 4 進度見 `docs/9007_STEP4_PROGRESS_REPORT.md`，本地校準結果見 `docs/9008_STEP4_LOCAL_VALIDATION_REPORT.md`。
+- 備註：Step 1 見 `docs/9003_STEP1_AUDIT_REPORT.md`；Step 2 見 `docs/9005_STEP2_AUDIT_REPORT.md`；Step 3 見 `docs/9006_STEP3_AUDIT_REPORT.md`；Step 4 進度見 `docs/9007_STEP4_PROGRESS_REPORT.md`，本地校準結果見 `docs/9008_STEP4_LOCAL_VALIDATION_REPORT.md`，平台連結驗證見 `docs/4004_NETLIFY_PLATFORM_VALIDATION_CHECKLIST.md`。
 
 ## 文件互相引用
 - `/code` 執行前置規則、必讀清單與檢查項目，請參考專案根目錄 `code.md`。

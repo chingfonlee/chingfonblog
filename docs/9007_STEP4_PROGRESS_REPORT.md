@@ -25,7 +25,8 @@
 
 ## 尚未完成項目
 - 尚未安裝 sitemap / RSS / Atom 相關套件。
-- 尚未進行 Netlify Deploy Preview / Production 流程驗證。
+- 尚未完成 Identity / Git Gateway 平台層驗證。
+- 尚未完成 `/admin` 登入與 Draft -> PR 實際操作驗證。
 
 ## 本地驗證結果
 - `ASTRO_TELEMETRY_DISABLED=1 npm run check`：通過（0 errors）。
@@ -39,3 +40,8 @@
 - 評估是否需要新增 preview / production 專用驗證 scripts。
 - 進入 Netlify 平台層驗證（Deploy Preview / Production / Identity / Git Gateway）。
 - 之後再決定是否安裝 `@astrojs/sitemap`、`@astrojs/rss`、`netlify-cli`。
+
+## 平台層驗證進展（本輪）
+- Deploy Preview：已驗證通過。
+- Production deploy：已驗證通過。
+- 待完成：Identity / Git Gateway 啟用與 `/admin` 實流程驗證。

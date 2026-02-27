@@ -25,27 +25,32 @@
 4. 等待 Netlify 在 PR 上回報 Deploy Preview 狀態。
 5. 開啟 Deploy Preview URL。
 6. 驗證：
-   - [ ] 首頁可開啟
-   - [ ] `/posts/` 可開啟
-   - [ ] draft 文章詳細頁可見
-   - [ ] 回應含 preview noindex 規則
+   - [x] 首頁可開啟
+   - [x] `/posts/` 可開啟
+   - [x] draft 文章詳細頁可見
+   - [x] 回應含 preview noindex 規則
 
 ### 測試 PR 執行紀錄（本輪）
 - 測試分支：`test/step4-deploy-preview`
 - 基準分支：`main`
 - 目的：觸發 Netlify Deploy Preview 並驗證 preview 環境行為。
-- PR 連結：待建立（建立後回填）。
+- Deploy Preview：`https://deploy-preview-1--leechingfon.netlify.app/`
+- 驗證結果：通過（`/`、`/posts/`、draft 文章頁皆可開啟，且含 `X-Robots-Tag: noindex, nofollow`）。
 
 ## C. Production 驗證
 1. 合併測試 PR 到 `main`。
 2. 進入 Netlify Deploys 檢視最新 Production deploy。
 3. 開啟正式站網址。
 4. 驗證：
-   - [ ] 首頁可開啟
-   - [ ] `/posts/` 可開啟
-   - [ ] draft 文章詳細頁不可見
-   - [ ] `/robots.txt` 可開啟
-   - [ ] `/llms.txt` 可開啟
+   - [x] 首頁可開啟
+   - [x] `/posts/` 可開啟
+   - [x] draft 文章詳細頁不可見
+   - [x] `/robots.txt` 可開啟
+   - [x] `/llms.txt` 可開啟
+
+### Production 驗證紀錄（本輪）
+- 網址：`https://leechingfon.netlify.app/`
+- 驗證結果：通過（首頁 200、draft 文章頁 404、robots/llms 正常）。
 
 ## D. Identity 啟用
 1. 進入 `Project configuration > Identity`。
@@ -85,8 +90,8 @@
    - [ ] 無公開註冊入口
 
 ## H. 驗收結論
-- [ ] PR 觸發 Deploy Preview
-- [ ] `main` 觸發 Production deploy
+- [x] PR 觸發 Deploy Preview
+- [x] `main` 觸發 Production deploy
 - [ ] Identity / Git Gateway 啟用順序正確
 - [ ] `/admin` 可登入並完成 Draft -> PR 流程
 - [ ] Draft 在 preview 可見、在 production 不可見
