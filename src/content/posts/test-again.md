@@ -6,3 +6,5 @@ slug: test
 draft: true
 ---
 test page
+
+it's TEST page
