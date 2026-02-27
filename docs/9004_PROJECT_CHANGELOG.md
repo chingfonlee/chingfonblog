@@ -149,3 +149,10 @@
 - 摘要：新增 Step 5 完成之 GitHub Release note 草稿文件。
 - 影響檔案：`docs/9010_RELEASE_NOTE_STEP5_DRAFT.md`、`docs/9004_PROJECT_CHANGELOG.md`
 - 備註：可直接複製草稿內容建立 GitHub Draft Release。
+
+### CHG-20260227-12
+- 日期：2026-02-27
+- 階段：Step 6
+- 摘要：新增 GitHub Actions CI，自動執行 `npm ci` 與 `npm run validate:local`。
+- 影響檔案：`.github/workflows/ci-validate-local.yml`、`docs/4003_CI_QUALITY_GATES.md`、`docs/9004_PROJECT_CHANGELOG.md`
+- 備註：觸發條件為 `push main`、`pull_request -> main`、`workflow_dispatch`。

@@ -4,14 +4,15 @@
 讓內容與設定在進入 main 前被一致驗證。
 
 ## CI 觸發條件
-- PR 開啟、更新、rebase 時觸發。
-- 針對 `docs/`、`src/content/`、`public/admin/`、`netlify.toml` 變更執行檢查。
+- Workflow 檔案：`.github/workflows/ci-validate-local.yml`。
+- `pull_request -> main`（PR 開啟/更新/rebase）觸發。
+- `push -> main` 觸發。
+- 支援 `workflow_dispatch` 手動執行。
 
 ## 必過檢查項
-- schema/frontmatter 驗證。
-- Astro build 檢查。
-- 連結可用性與關鍵入口檢查（robots、llms、sitemap、RSS/Atom）。
-- YAML/Markdown 基本語法檢查。
+- 安裝：`npm ci`。
+- 驗證：`npm run validate:local`（含 check、production/preview build 與 dist verify）。
+- 失敗即視為品質閘門未通過。
 
 ## 失敗處置流程
 - 任一檢查失敗即阻擋合併。
