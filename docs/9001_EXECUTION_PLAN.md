@@ -54,15 +54,24 @@
   - [x] 常見故障有對應排查步驟
   - [x] 分支保護與審核要求明確
 
+### Step 6：治理自動化（進行中：2026-02-27）
+- 動作：將 CI 與 branch protection 落地為平台層強制門檻。
+- 交付物：GitHub Actions workflow、branch protection playbook、驗證結果。
+- 審核點：
+  - [x] CI 於 `push/pull_request` 自動執行 `npm ci` + `npm run validate:local`
+  - [ ] `main` branch protection 已啟用且綁定 CI check
+  - [ ] 建立阻擋測試（未過 CI 不可 merge）
+
 ## 里程碑與確認機制
 - M1：Step 1 完成並核可。
 - M2：Step 2 完成並核可。
 - M3：Step 3~5 已完成並核可。
+- M4：Step 6 完成並核可。
 - 每個里程碑完成後，先回報「變更摘要 + 審核結果」，經你確認再進下一步。
 
 ## 本次先行審核結果
-- 狀態：Step 1、Step 2、Step 3、Step 4、Step 5 已完成。
-- 備註：Step 1 見 `docs/9003_STEP1_AUDIT_REPORT.md`；Step 2 見 `docs/9005_STEP2_AUDIT_REPORT.md`；Step 3 見 `docs/9006_STEP3_AUDIT_REPORT.md`；Step 4 見 `docs/9007_STEP4_PROGRESS_REPORT.md`、`docs/9008_STEP4_LOCAL_VALIDATION_REPORT.md`、`docs/4004_NETLIFY_PLATFORM_VALIDATION_CHECKLIST.md`；Step 5 見 `docs/9009_STEP5_SECURITY_RUNBOOK_REPORT.md`。
+- 狀態：Step 1、Step 2、Step 3、Step 4、Step 5 已完成；Step 6 進行中。
+- 備註：Step 1 見 `docs/9003_STEP1_AUDIT_REPORT.md`；Step 2 見 `docs/9005_STEP2_AUDIT_REPORT.md`；Step 3 見 `docs/9006_STEP3_AUDIT_REPORT.md`；Step 4 見 `docs/9007_STEP4_PROGRESS_REPORT.md`、`docs/9008_STEP4_LOCAL_VALIDATION_REPORT.md`、`docs/4004_NETLIFY_PLATFORM_VALIDATION_CHECKLIST.md`；Step 5 見 `docs/9009_STEP5_SECURITY_RUNBOOK_REPORT.md`；Step 6 依 `docs/5003_GITHUB_BRANCH_PROTECTION_PLAYBOOK.md` 執行。
 
 ## 文件互相引用
 - `/code` 執行前置規則、必讀清單與檢查項目，請參考專案根目錄 `code.md`。

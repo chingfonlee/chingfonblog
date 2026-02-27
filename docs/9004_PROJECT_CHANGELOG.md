@@ -156,3 +156,10 @@
 - 摘要：新增 GitHub Actions CI，自動執行 `npm ci` 與 `npm run validate:local`。
 - 影響檔案：`.github/workflows/ci-validate-local.yml`、`docs/4003_CI_QUALITY_GATES.md`、`docs/9004_PROJECT_CHANGELOG.md`
 - 備註：觸發條件為 `push main`、`pull_request -> main`、`workflow_dispatch`。
+
+### CHG-20260227-13
+- 日期：2026-02-27
+- 階段：Step 6
+- 摘要：新增 GitHub branch protection 後台操作清單，並將 Step 6 納入執行計畫。
+- 影響檔案：`docs/5003_GITHUB_BRANCH_PROTECTION_PLAYBOOK.md`、`docs/9001_EXECUTION_PLAN.md`、`code.md`、`docs/9004_PROJECT_CHANGELOG.md`
+- 備註：下一步為依 playbook 完成 `main` 保護規則實際設定與阻擋測試。
