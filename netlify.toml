@@ -1,0 +1,35 @@
+[build]
+  command = "npm run build:netlify"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+  SITE_ENV = "production"
+  ENABLE_INDEXING = "true"
+
+[context.production.environment]
+  SITE_ENV = "production"
+  ENABLE_INDEXING = "true"
+
+[context.deploy-preview.environment]
+  SITE_ENV = "deploy-preview"
+  ENABLE_INDEXING = "false"
+  X_ROBOTS_TAG = "noindex, nofollow"
+
+[context.branch-deploy.environment]
+  SITE_ENV = "branch-deploy"
+  ENABLE_INDEXING = "false"
+  X_ROBOTS_TAG = "noindex, nofollow"
+
+[context.dev.environment]
+  SITE_ENV = "deploy-preview"
+  ENABLE_INDEXING = "false"
+  X_ROBOTS_TAG = "noindex, nofollow"
+
+[dev]
+  command = "npm run dev"
+  publish = "dist"
+  port = 8888
+  targetPort = 4321
+  autoLaunch = false
+  framework = "#custom"

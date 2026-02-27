@@ -1,0 +1,85 @@
+backend:
+  name: git-gateway
+  branch: main
+
+publish_mode: editorial_workflow
+
+site_url: https://example.com
+display_url: https://example.com
+
+media_library:
+  name: cloudinary
+  config:
+    cloud_name: YOUR_CLOUDINARY_CLOUD_NAME
+    api_key: YOUR_CLOUDINARY_API_KEY
+
+collections:
+  - name: posts
+    label: Posts
+    label_singular: Post
+    folder: src/content/posts
+    create: true
+    extension: md
+    format: frontmatter
+    slug: '{{slug}}'
+    preview_path: 'posts/{{slug}}'
+    fields:
+      - label: Title
+        name: title
+        widget: string
+
+      - label: Description
+        name: description
+        widget: text
+
+      - label: Published Date
+        name: pubDate
+        widget: datetime
+        format: YYYY-MM-DD
+        time_format: false
+
+      - label: Date Modified
+        name: dateModified
+        widget: datetime
+        format: YYYY-MM-DD
+        time_format: false
+        required: false
+
+      - label: Slug
+        name: slug
+        widget: string
+        pattern:
+          - '^[a-z0-9-]+$'
+          - 'Use lowercase letters, numbers, and hyphens only.'
+
+      - label: Tags
+        name: tags
+        widget: list
+        required: false
+
+      - label: Draft
+        name: draft
+        widget: boolean
+        default: true
+
+      - label: Cover Image
+        name: coverImage
+        widget: image
+        required: false
+        media_library:
+          config:
+            multiple: false
+
+      - label: Cover Image Alt
+        name: coverImageAlt
+        widget: string
+        required: false
+
+      - label: Canonical URL
+        name: canonicalURL
+        widget: string
+        required: false
+
+      - label: Body
+        name: body
+        widget: markdown

@@ -1,0 +1,5 @@
+node_modules/
+.astro/
+dist/
+.npm-cache/
+public/_headers

@@ -1,0 +1,36 @@
+{
+  "name": "lee-chingfon",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "verify": "astro check && astro build",
+    "prepare:netlify": "node ./scripts/prepare-netlify.mjs",
+    "build:netlify": "npm run prepare:netlify && astro build",
+    "build:production": "ASTRO_TELEMETRY_DISABLED=1 SITE_ENV=production ENABLE_INDEXING=true npm run build:netlify",
+    "build:preview": "ASTRO_TELEMETRY_DISABLED=1 SITE_ENV=deploy-preview ENABLE_INDEXING=false X_ROBOTS_TAG='noindex, nofollow' npm run build:netlify",
+    "verify:dist": "node ./scripts/verify-dist.mjs",
+    "verify:production": "SITE_ENV=production ENABLE_INDEXING=true node ./scripts/verify-dist.mjs",
+    "verify:preview": "SITE_ENV=deploy-preview ENABLE_INDEXING=false X_ROBOTS_TAG='noindex, nofollow' node ./scripts/verify-dist.mjs",
+    "validate:local:production": "ASTRO_TELEMETRY_DISABLED=1 npm run check && npm run build:production && npm run verify:production",
+    "validate:local:preview": "npm run build:preview && npm run verify:preview",
+    "validate:local": "npm run validate:local:production && npm run validate:local:preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@astrojs/check": "^0.9.6",
+    "@types/node": "^25.3.2",
+    "astro": "^5.18.0",
+    "typescript": "^5.9.3"
+  }
+}

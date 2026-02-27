@@ -1,0 +1,42 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const isPreview =
+    process.env.SITE_ENV === 'deploy-preview' || process.env.SITE_ENV === 'branch-deploy';
+  const entries = await getCollection('posts', ({ data }) => isPreview || !data.draft);
+
+  return entries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<BaseLayout title={`${entry.data.title} | AI Friendly Blog`} description={entry.data.description}>
+  <article class="card stack">
+    <p class="muted">
+      {entry.data.pubDate.toISOString().slice(0, 10)}
+      {entry.data.draft ? ' · draft' : ''}
+    </p>
+    <h1>{entry.data.title}</h1>
+    <p>{entry.data.description}</p>
+    {
+      entry.data.coverImage ? (
+        <figure>
+          <img
+            src={entry.data.coverImage}
+            alt={entry.data.coverImageAlt ?? ''}
+            style="width: 100%; border-radius: 12px;"
+          />
+          {entry.data.coverImageAlt ? <figcaption class="muted">{entry.data.coverImageAlt}</figcaption> : null}
+        </figure>
+      ) : null
+    }
+    <Content />
+  </article>
+</BaseLayout>

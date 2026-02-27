@@ -1,0 +1,46 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const isPreview =
+  import.meta.env.DEV ||
+  process.env.SITE_ENV === 'deploy-preview' ||
+  process.env.SITE_ENV === 'branch-deploy';
+
+const posts = (await getCollection('posts', ({ data }) => isPreview || !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<BaseLayout title="AI Friendly Blog" description="Minimal executable Astro skeleton for the project.">
+  <section class="card stack">
+    <p class="muted">Current stage: executable Astro skeleton for local verification.</p>
+    <h1>AI Friendly Blog</h1>
+    <p>
+      This homepage is part of the Step 4 Astro baseline. It verifies routing, content loading,
+      and static build behavior.
+    </p>
+    <p class="muted">
+      Visibility mode:
+      {isPreview ? 'preview/dev includes drafts' : 'production build excludes drafts'}.
+    </p>
+  </section>
+
+  <section class="card stack" style="margin-top: 1rem;">
+    <h2>Posts</h2>
+    {
+      posts.length === 0 ? (
+        <p class="muted">No published posts are available in the current build mode.</p>
+      ) : (
+        <ul class="clean stack">
+          {posts.map((post) => (
+            <li>
+              <a href={`/posts/${post.slug}/`}>{post.data.title}</a>
+              <div class="muted">{post.data.description}</div>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </section>
+</BaseLayout>

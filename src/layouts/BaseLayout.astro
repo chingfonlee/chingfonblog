@@ -1,0 +1,103 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'AI Friendly Blog powered by Astro.' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f6f3eb;
+        --surface: #fffdf8;
+        --ink: #1f1d1a;
+        --muted: #676258;
+        --line: #d9d1c2;
+        --accent: #b14d18;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        background: linear-gradient(180deg, #f2ede3 0%, var(--bg) 100%);
+        color: var(--ink);
+      }
+
+      a {
+        color: var(--accent);
+      }
+
+      .shell {
+        width: min(960px, calc(100% - 2rem));
+        margin: 0 auto;
+        padding: 2rem 0 4rem;
+      }
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        align-items: baseline;
+        margin-bottom: 2rem;
+      }
+
+      nav {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 1.25rem;
+        box-shadow: 0 12px 32px rgba(31, 29, 26, 0.06);
+      }
+
+      .muted {
+        color: var(--muted);
+      }
+
+      ul.clean {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .stack > * + * {
+        margin-top: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <header>
+        <div>
+          <a href="/"><strong>AI Friendly Blog</strong></a>
+          <div class="muted">Astro + Decap + Netlify skeleton</div>
+        </div>
+        <nav>
+          <a href="/">Home</a>
+          <a href="/posts/">Posts</a>
+          <a href="/admin/">Admin</a>
+        </nav>
+      </header>
+      <main>
+        <slot />
+      </main>
+    </div>
+  </body>
+</html>

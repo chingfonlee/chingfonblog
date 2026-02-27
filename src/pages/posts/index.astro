@@ -1,0 +1,42 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const isPreview =
+  import.meta.env.DEV ||
+  process.env.SITE_ENV === 'deploy-preview' ||
+  process.env.SITE_ENV === 'branch-deploy';
+
+const posts = (await getCollection('posts', ({ data }) => isPreview || !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<BaseLayout title="Posts | AI Friendly Blog" description="Post index for local Astro verification.">
+  <section class="card stack">
+    <h1>Posts</h1>
+    <p class="muted">
+      {isPreview ? 'Preview/dev mode shows drafts.' : 'Production mode lists published posts only.'}
+    </p>
+    {
+      posts.length === 0 ? (
+        <p>No posts available in this mode.</p>
+      ) : (
+        <ul class="clean stack">
+          {posts.map((post) => (
+            <li class="card">
+              <a href={`/posts/${post.slug}/`}>
+                <strong>{post.data.title}</strong>
+              </a>
+              <div>{post.data.description}</div>
+              <div class="muted">
+                {post.data.pubDate.toISOString().slice(0, 10)}
+                {post.data.draft ? ' · draft' : ''}
+              </div>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </section>
+</BaseLayout>
