@@ -25,7 +25,7 @@
 - [x] `llms.txt`、`robots.txt` 入口可用
 
 ## 注意事項
-- `site_url`、`display_url`、`example.com` 為占位值，上線前需替換正式網域。
+- `site_url`、`display_url` 與公開入口網域已固定為 `https://leechingfon.netlify.app`。
 - Cloudinary `cloud_name`、`api_key` 需改為實際值（敏感值請放安全管道管理）。
 - Deploy Preview noindex 以 `netlify.toml` context 環境變數提供，後續需在實作層接入。
 

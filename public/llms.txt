@@ -1,14 +1,14 @@
 site: AI Friendly Blog
-base_url: https://example.com
+base_url: https://leechingfon.netlify.app
 language: zh-Hant
 
 description: HTML-first technical blog powered by Astro with Decap editorial workflow.
 
 entrypoints:
-- https://example.com/
-- https://example.com/sitemap-index.xml
-- https://example.com/rss.xml
-- https://example.com/atom.xml
+- https://leechingfon.netlify.app/
+- https://leechingfon.netlify.app/sitemap-index.xml
+- https://leechingfon.netlify.app/rss.xml
+- https://leechingfon.netlify.app/atom.xml
 
 policies:
 - Draft content is not part of production indexes.

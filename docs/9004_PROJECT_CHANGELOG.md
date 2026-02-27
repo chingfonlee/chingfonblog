@@ -114,3 +114,10 @@
 - 摘要：建立 Deploy Preview 測試分支並補充測試 PR 執行紀錄。
 - 影響檔案：`docs/4004_NETLIFY_PLATFORM_VALIDATION_CHECKLIST.md`、`docs/9004_PROJECT_CHANGELOG.md`
 - 備註：測試分支為 `test/step4-deploy-preview`，待 push 後建立 PR。
+
+### CHG-20260227-07
+- 日期：2026-02-27
+- 階段：Step 4
+- 摘要：將站點正式網域固定為 `https://leechingfon.netlify.app` 並更新相關設定與內容範例。
+- 影響檔案：`astro.config.mjs`、`public/admin/config.yml`、`public/robots.txt`、`public/llms.txt`、`src/content/posts/2026-02-26-astro-decap-netlify-stack.md`、`docs/9005_STEP2_AUDIT_REPORT.md`、`docs/9004_PROJECT_CHANGELOG.md`
+- 備註：移除 `example.com` 占位值，改為固定 Netlify 網域。

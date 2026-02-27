@@ -11,7 +11,7 @@ tags:
 draft: true
 coverImage: "https://res.cloudinary.com/example/image/upload/v1700000000/blog/astro-decap-cover.jpg"
 coverImageAlt: "Astro、Decap 與 Netlify 的內容發布流程圖"
-canonicalURL: "https://example.com/posts/astro-decap-netlify-stack"
+canonicalURL: "https://leechingfon.netlify.app/posts/astro-decap-netlify-stack"
 ---
 
 ## 為什麼使用這個組合
