@@ -12,7 +12,7 @@ const posts = (await getCollection('posts', ({ data }) => isPreview || !data.dra
 );
 ---
 
-<BaseLayout title="Posts | AI Friendly Blog" description="Post index for local Astro verification.">
+<BaseLayout title="Posts | lee-chingfon" description="Post index for lee-chingfon blog.">
   <section class="card stack">
     <h1>Posts</h1>
     <p class="muted">
@@ -25,7 +25,7 @@ const posts = (await getCollection('posts', ({ data }) => isPreview || !data.dra
         <ul class="clean stack">
           {posts.map((post) => (
             <li class="card">
-              <a href={`/posts/${post.slug}/`}>
+              <a class="post-link" href={`/posts/${post.slug}/`}>
                 <strong>{post.data.title}</strong>
               </a>
               <div>{post.data.description}</div>

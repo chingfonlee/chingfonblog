@@ -163,3 +163,31 @@
 - 摘要：新增 GitHub branch protection 後台操作清單，並將 Step 6 納入執行計畫。
 - 影響檔案：`docs/5003_GITHUB_BRANCH_PROTECTION_PLAYBOOK.md`、`docs/9001_EXECUTION_PLAN.md`、`code.md`、`docs/9004_PROJECT_CHANGELOG.md`
 - 備註：下一步為依 playbook 完成 `main` 保護規則實際設定與阻擋測試。
+
+### CHG-20260228-01
+- 日期：2026-02-28
+- 階段：Documentation
+- 摘要：新增 GitHub 首頁導向與 AI 架構總覽，讓外部 AI 可快速理解專案設計。
+- 影響檔案：`README.md`、`docs/9011_AI_ARCHITECTURE_OVERVIEW.md`、`code.md`、`docs/9004_PROJECT_CHANGELOG.md`
+- 備註：提供架構邊界、流程、約束、驗證指令與文件閱讀順序。
+
+### CHG-20260228-02
+- 日期：2026-02-28
+- 階段：Design Review P0
+- 摘要：依設計審查先行執行命名一致、文字對比提升、Hero 主次強化與本地字體目錄準備。
+- 影響檔案：`index.html`、`public/assets/fonts/.gitkeep`、`docs/9004_PROJECT_CHANGELOG.md`
+- 備註：`gray` 提升為 `#6F6A65`；Hero 新增 value proposition 與 CTA；字體改為 `@font-face` 本地優先策略。
+
+### CHG-20260228-03
+- 日期：2026-02-28
+- 階段：Design Review P0
+- 摘要：導入 Swei Spring 字體（CJK TC）並更新品牌頁字體設定為本地自託管。
+- 影響檔案：`index.html`、`public/assets/fonts/SweiSpringCJKtc-Regular.woff2`、`public/assets/fonts/SweiSpringCJKtc-SemiBold.woff2`、`public/assets/fonts/SIL_Open_Font_License_1.1.txt`、`docs/9004_PROJECT_CHANGELOG.md`
+- 備註：字體來源為 `max32002/swei-spring`（OFL 1.1），目前使用 400 與 600 字重。
+
+### CHG-20260228-04
+- 日期：2026-02-28
+- 階段：Design Integration
+- 摘要：將 `index.html` 品牌視覺風格整合到 Astro 正式頁面與版型。
+- 影響檔案：`src/layouts/BaseLayout.astro`、`src/pages/index.astro`、`src/pages/posts/index.astro`、`src/pages/posts/[slug].astro`、`docs/9004_PROJECT_CHANGELOG.md`
+- 備註：套用同色彩與質感背景、Swei Spring 字體、Hero/CTA 與卡片風格，確保部署站風格一致。
