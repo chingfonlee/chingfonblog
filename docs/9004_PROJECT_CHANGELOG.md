@@ -177,3 +177,10 @@
 - 摘要：依設計審查先行執行命名一致、文字對比提升、Hero 主次強化與本地字體目錄準備。
 - 影響檔案：`index.html`、`public/assets/fonts/.gitkeep`、`docs/9004_PROJECT_CHANGELOG.md`
 - 備註：`gray` 提升為 `#6F6A65`；Hero 新增 value proposition 與 CTA；字體改為 `@font-face` 本地優先策略。
+
+### CHG-20260228-03
+- 日期：2026-02-28
+- 階段：Design Review P0
+- 摘要：導入 Swei Spring 字體（CJK TC）並更新品牌頁字體設定為本地自託管。
+- 影響檔案：`index.html`、`public/assets/fonts/SweiSpringCJKtc-Regular.woff2`、`public/assets/fonts/SweiSpringCJKtc-SemiBold.woff2`、`public/assets/fonts/SIL_Open_Font_License_1.1.txt`、`docs/9004_PROJECT_CHANGELOG.md`
+- 備註：字體來源為 `max32002/swei-spring`（OFL 1.1），目前使用 400 與 600 字重。
