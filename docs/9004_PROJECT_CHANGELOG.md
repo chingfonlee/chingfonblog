@@ -163,3 +163,10 @@
 - 摘要：新增 GitHub branch protection 後台操作清單，並將 Step 6 納入執行計畫。
 - 影響檔案：`docs/5003_GITHUB_BRANCH_PROTECTION_PLAYBOOK.md`、`docs/9001_EXECUTION_PLAN.md`、`code.md`、`docs/9004_PROJECT_CHANGELOG.md`
 - 備註：下一步為依 playbook 完成 `main` 保護規則實際設定與阻擋測試。
+
+### CHG-20260228-01
+- 日期：2026-02-28
+- 階段：Documentation
+- 摘要：新增 GitHub 首頁導向與 AI 架構總覽，讓外部 AI 可快速理解專案設計。
+- 影響檔案：`README.md`、`docs/9011_AI_ARCHITECTURE_OVERVIEW.md`、`code.md`、`docs/9004_PROJECT_CHANGELOG.md`
+- 備註：提供架構邊界、流程、約束、驗證指令與文件閱讀順序。
