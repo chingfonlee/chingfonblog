@@ -12,14 +12,23 @@ const posts = (await getCollection('posts', ({ data }) => isPreview || !data.dra
 );
 ---
 
-<BaseLayout title="AI Friendly Blog" description="Minimal executable Astro skeleton for the project.">
+<BaseLayout
+  title="lee-chingfon | AI Friendly Blog"
+  description="lee-chingfon 的極簡優雅內容網站，使用 Astro、Decap CMS 與 Netlify。"
+>
   <section class="card stack">
-    <p class="muted">Current stage: executable Astro skeleton for local verification.</p>
-    <h1>AI Friendly Blog</h1>
-    <p>
-      This homepage is part of the Step 4 Astro baseline. It verifies routing, content loading,
-      and static build behavior.
+    <p class="chip">BRAND GUIDELINES STYLE</p>
+    <h1 class="hero-title">lee-chingfon</h1>
+    <p class="muted">
+      以極簡的秩序承載優雅細節，讓視覺在平靜中留下清晰而長久的感受。
     </p>
+    <p class="muted">
+      我專注於打造高質感品牌網站與內容系統，讓品牌在第一眼就傳達清楚、沈著與可信任。
+    </p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="/posts/">看作品應用</a>
+      <a class="btn btn-secondary" href="/admin/">聯絡與合作</a>
+    </div>
     <p class="muted">
       Visibility mode:
       {isPreview ? 'preview/dev includes drafts' : 'production build excludes drafts'}.
@@ -34,9 +43,15 @@ const posts = (await getCollection('posts', ({ data }) => isPreview || !data.dra
       ) : (
         <ul class="clean stack">
           {posts.map((post) => (
-            <li>
-              <a href={`/posts/${post.slug}/`}>{post.data.title}</a>
+            <li class="card">
+              <a class="post-link" href={`/posts/${post.slug}/`}>
+                <strong>{post.data.title}</strong>
+              </a>
               <div class="muted">{post.data.description}</div>
+              <div class="muted">
+                {post.data.pubDate.toISOString().slice(0, 10)}
+                {post.data.draft ? ' · draft' : ''}
+              </div>
             </li>
           ))}
         </ul>

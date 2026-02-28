@@ -4,7 +4,7 @@ interface Props {
   description?: string;
 }
 
-const { title, description = 'AI Friendly Blog powered by Astro.' } = Astro.props;
+const { title, description = 'lee-chingfon AI-friendly blog powered by Astro.' } = Astro.props;
 ---
 
 <!doctype html>
@@ -14,34 +14,87 @@ const { title, description = 'AI Friendly Blog powered by Astro.' } = Astro.prop
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="theme-color" content="#F4F2EF" />
     <style>
       :root {
         color-scheme: light;
-        --bg: #f6f3eb;
-        --surface: #fffdf8;
-        --ink: #1f1d1a;
-        --muted: #676258;
-        --line: #d9d1c2;
-        --accent: #b14d18;
+        --ink: #2e2b29;
+        --bg: #f4f2ef;
+        --gray: #6f6a65;
+        --primary: #c9c5c0;
+        --accent: #98a7b1;
+        --border: #ddd8d2;
+        --panel: #fbfaf8;
       }
 
       * {
         box-sizing: border-box;
       }
 
+      @font-face {
+        font-family: "SweiSpringTC";
+        src: url("/assets/fonts/SweiSpringCJKtc-Regular.woff2") format("woff2");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "SweiSpringTC";
+        src: url("/assets/fonts/SweiSpringCJKtc-SemiBold.woff2") format("woff2");
+        font-weight: 600;
+        font-style: normal;
+        font-display: swap;
+      }
+
       body {
         margin: 0;
-        font-family: Georgia, "Times New Roman", serif;
-        background: linear-gradient(180deg, #f2ede3 0%, var(--bg) 100%);
+        font-family: "SweiSpringTC", "Noto Sans TC", sans-serif;
+        background: var(--bg);
         color: var(--ink);
+        line-height: 1.7;
+        position: relative;
+        min-height: 100vh;
+      }
+
+      body::before,
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: -2;
+      }
+
+      body::before {
+        background-image:
+          radial-gradient(
+            circle at 15% 20%,
+            rgba(201, 197, 192, 0.45) 0,
+            rgba(201, 197, 192, 0) 40%
+          ),
+          radial-gradient(
+            circle at 85% 15%,
+            rgba(152, 167, 177, 0.2) 0,
+            rgba(152, 167, 177, 0) 45%
+          ),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 100%);
+      }
+
+      body::after {
+        opacity: 0.16;
+        background-size: 32px 32px;
+        background-image:
+          linear-gradient(to right, rgba(111, 106, 101, 0.07) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(111, 106, 101, 0.07) 1px, transparent 1px);
       }
 
       a {
-        color: var(--accent);
+        color: inherit;
       }
 
       .shell {
-        width: min(960px, calc(100% - 2rem));
+        width: min(1280px, calc(100% - 2rem));
         margin: 0 auto;
         padding: 2rem 0 4rem;
       }
@@ -50,25 +103,32 @@ const { title, description = 'AI Friendly Blog powered by Astro.' } = Astro.prop
         display: flex;
         justify-content: space-between;
         gap: 1rem;
-        align-items: baseline;
-        margin-bottom: 2rem;
+        align-items: center;
+        margin-bottom: 3rem;
+        padding: 1.25rem 1.5rem;
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        background: rgba(251, 250, 248, 0.86);
+        backdrop-filter: blur(4px);
+        box-shadow: 0 16px 60px -32px rgba(40, 36, 32, 0.25);
       }
 
       nav {
         display: flex;
         gap: 1rem;
+        flex-wrap: wrap;
       }
 
       .card {
-        background: var(--surface);
-        border: 1px solid var(--line);
-        border-radius: 16px;
-        padding: 1.25rem;
-        box-shadow: 0 12px 32px rgba(31, 29, 26, 0.06);
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        padding: 1.5rem;
+        box-shadow: 0 16px 60px -32px rgba(40, 36, 32, 0.25);
       }
 
       .muted {
-        color: var(--muted);
+        color: var(--gray);
       }
 
       ul.clean {
@@ -80,19 +140,137 @@ const { title, description = 'AI Friendly Blog powered by Astro.' } = Astro.prop
       .stack > * + * {
         margin-top: 1rem;
       }
+
+      .brand {
+        text-decoration: none;
+      }
+
+      .brand strong {
+        font-size: clamp(1.5rem, 2.4vw, 2.3rem);
+        letter-spacing: 0.01em;
+      }
+
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        border: 1px solid var(--border);
+        background: var(--panel);
+        color: var(--gray);
+        border-radius: 999px;
+        padding: 0.4rem 0.8rem;
+        letter-spacing: 0.08em;
+        font-size: 0.75rem;
+      }
+
+      .hero-title {
+        margin: 0;
+        font-size: clamp(2.6rem, 8vw, 7rem);
+        line-height: 0.92;
+        letter-spacing: -0.02em;
+      }
+
+      .btn-row {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        padding: 0.75rem 1.25rem;
+        border: 1px solid var(--ink);
+        text-decoration: none;
+        transition: all 600ms ease-out;
+      }
+
+      .btn-primary {
+        background: var(--ink);
+        color: var(--bg);
+      }
+
+      .btn-primary:hover {
+        background: var(--accent);
+        color: var(--ink);
+        transform: translateY(-1px);
+      }
+
+      .btn-secondary:hover {
+        background: var(--ink);
+        color: var(--bg);
+      }
+
+      .post-link {
+        text-decoration: none;
+      }
+
+      .post-link strong {
+        font-size: 1.15rem;
+      }
+
+      .post-link:hover strong {
+        text-decoration: underline;
+      }
+
+      .prose {
+        line-height: 1.8;
+      }
+
+      .prose h2,
+      .prose h3 {
+        margin-top: 1.8rem;
+        margin-bottom: 0.8rem;
+      }
+
+      .prose p {
+        margin: 0.8rem 0;
+      }
+
+      .prose ul,
+      .prose ol {
+        padding-left: 1.2rem;
+      }
+
+      .prose img {
+        width: 100%;
+        border-radius: 16px;
+      }
+
+      .nav-link {
+        text-decoration: none;
+        color: var(--gray);
+        transition: color 400ms ease-out;
+      }
+
+      .nav-link:hover {
+        color: var(--ink);
+      }
+
+      @media (max-width: 760px) {
+        .shell {
+          width: min(1280px, calc(100% - 1.25rem));
+        }
+
+        header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
     </style>
   </head>
   <body>
     <div class="shell">
       <header>
         <div>
-          <a href="/"><strong>AI Friendly Blog</strong></a>
-          <div class="muted">Astro + Decap + Netlify skeleton</div>
+          <a class="brand" href="/"><strong>lee-chingfon</strong></a>
+          <div class="muted">Minimal · Elegant · Calm</div>
         </div>
         <nav>
-          <a href="/">Home</a>
-          <a href="/posts/">Posts</a>
-          <a href="/admin/">Admin</a>
+          <a class="nav-link" href="/">Home</a>
+          <a class="nav-link" href="/posts/">Posts</a>
+          <a class="nav-link" href="/admin/">Admin</a>
         </nav>
       </header>
       <main>

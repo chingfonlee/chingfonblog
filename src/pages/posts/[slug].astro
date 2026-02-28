@@ -17,7 +17,7 @@ const { entry } = Astro.props;
 const { Content } = await render(entry);
 ---
 
-<BaseLayout title={`${entry.data.title} | AI Friendly Blog`} description={entry.data.description}>
+<BaseLayout title={`${entry.data.title} | lee-chingfon`} description={entry.data.description}>
   <article class="card stack">
     <p class="muted">
       {entry.data.pubDate.toISOString().slice(0, 10)}
@@ -37,6 +37,8 @@ const { Content } = await render(entry);
         </figure>
       ) : null
     }
-    <Content />
+    <div class="prose">
+      <Content />
+    </div>
   </article>
 </BaseLayout>

@@ -184,3 +184,10 @@
 - 摘要：導入 Swei Spring 字體（CJK TC）並更新品牌頁字體設定為本地自託管。
 - 影響檔案：`index.html`、`public/assets/fonts/SweiSpringCJKtc-Regular.woff2`、`public/assets/fonts/SweiSpringCJKtc-SemiBold.woff2`、`public/assets/fonts/SIL_Open_Font_License_1.1.txt`、`docs/9004_PROJECT_CHANGELOG.md`
 - 備註：字體來源為 `max32002/swei-spring`（OFL 1.1），目前使用 400 與 600 字重。
+
+### CHG-20260228-04
+- 日期：2026-02-28
+- 階段：Design Integration
+- 摘要：將 `index.html` 品牌視覺風格整合到 Astro 正式頁面與版型。
+- 影響檔案：`src/layouts/BaseLayout.astro`、`src/pages/index.astro`、`src/pages/posts/index.astro`、`src/pages/posts/[slug].astro`、`docs/9004_PROJECT_CHANGELOG.md`
+- 備註：套用同色彩與質感背景、Swei Spring 字體、Hero/CTA 與卡片風格，確保部署站風格一致。
