@@ -170,3 +170,10 @@
 - 摘要：新增 GitHub 首頁導向與 AI 架構總覽，讓外部 AI 可快速理解專案設計。
 - 影響檔案：`README.md`、`docs/9011_AI_ARCHITECTURE_OVERVIEW.md`、`code.md`、`docs/9004_PROJECT_CHANGELOG.md`
 - 備註：提供架構邊界、流程、約束、驗證指令與文件閱讀順序。
+
+### CHG-20260228-02
+- 日期：2026-02-28
+- 階段：Design Review P0
+- 摘要：依設計審查先行執行命名一致、文字對比提升、Hero 主次強化與本地字體目錄準備。
+- 影響檔案：`index.html`、`public/assets/fonts/.gitkeep`、`docs/9004_PROJECT_CHANGELOG.md`
+- 備註：`gray` 提升為 `#6F6A65`；Hero 新增 value proposition 與 CTA；字體改為 `@font-face` 本地優先策略。

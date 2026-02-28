@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>lee-chengfon Brand Guidelines</title>
+    <meta
+      name="description"
+      content="lee-chengfon 品牌視覺規範：極簡、優雅、平靜，專注於沈著且高辨識度的數位體驗。"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              ink: "#2E2B29",
+              bg: "#F4F2EF",
+              gray: "#6F6A65",
+              primary: "#C9C5C0",
+              accent: "#98A7B1",
+              border: "#DDD8D2",
+              panel: "#FBFAF8",
+              danger: "#D24B4B",
+            },
+            fontFamily: {
+              heading: ['"LCSerif"', '"Cormorant Garamond"', "serif"],
+              body: ['"LCSans"', '"Manrope"', "sans-serif"],
+            },
+            boxShadow: {
+              soft: "0 16px 60px -32px rgba(40, 36, 32, 0.25)",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      :root {
+        color-scheme: light;
+      }
+
+      @font-face {
+        font-family: "LCSerif";
+        src:
+          local("Cormorant Garamond"),
+          url("/assets/fonts/lc-serif-600.woff2") format("woff2");
+        font-weight: 500 700;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "LCSans";
+        src:
+          local("Manrope"),
+          url("/assets/fonts/lc-sans-400.woff2") format("woff2");
+        font-weight: 400 700;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      body {
+        background: #f4f2ef;
+      }
+
+      .texture-layer {
+        background-image:
+          radial-gradient(
+            circle at 15% 20%,
+            rgba(201, 197, 192, 0.45) 0,
+            rgba(201, 197, 192, 0) 40%
+          ),
+          radial-gradient(
+            circle at 85% 15%,
+            rgba(152, 167, 177, 0.2) 0,
+            rgba(152, 167, 177, 0) 45%
+          ),
+          linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.35) 0%,
+            rgba(255, 255, 255, 0) 100%
+          );
+      }
+
+      .grain-layer {
+        opacity: 0.2;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.22'/%3E%3C/svg%3E");
+      }
+
+      .grid-layer {
+        background-size: 32px 32px;
+        background-image:
+          linear-gradient(
+            to right,
+            rgba(136, 132, 127, 0.07) 1px,
+            transparent 1px
+          ),
+          linear-gradient(
+            to bottom,
+            rgba(136, 132, 127, 0.07) 1px,
+            transparent 1px
+          );
+      }
+    </style>
+  </head>
+  <body class="font-body text-ink antialiased">
+    <div class="pointer-events-none fixed inset-0 -z-10 texture-layer"></div>
+    <div class="pointer-events-none fixed inset-0 -z-10 grain-layer"></div>
+    <div class="pointer-events-none fixed inset-0 -z-10 grid-layer"></div>
+
+    <main class="mx-auto flex max-w-7xl flex-col gap-24 px-8 py-16 sm:px-12 lg:px-16 lg:py-24">
+      <section class="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-16">
+        <div class="lg:col-span-8">
+          <p class="mb-8 inline-flex items-center rounded-full border border-border bg-panel px-4 py-2 text-sm tracking-[0.14em] text-gray">
+            BRAND GUIDELINES 2026
+          </p>
+          <h1 class="font-heading text-[clamp(3rem,9vw,7.4rem)] leading-[0.92] tracking-tight text-ink">
+            lee-chengfon
+          </h1>
+          <p class="mt-8 max-w-3xl text-lg leading-[1.75] text-gray sm:text-xl">
+            以極簡的秩序承載優雅細節，讓視覺在平靜中留下清晰而長久的感受。
+          </p>
+          <p class="mt-6 max-w-3xl text-base leading-[1.75] text-gray sm:text-lg">
+            我專注於打造高質感品牌網站與內容系統，讓品牌在第一眼就傳達「清楚、沈著、可信任」。
+          </p>
+          <div class="mt-8 flex flex-wrap items-center gap-4">
+            <a
+              href="#ui-components"
+              class="rounded-full bg-ink px-8 py-3 text-sm font-semibold tracking-[0.08em] text-bg transition duration-700 ease-out hover:bg-accent hover:text-ink"
+              >看作品應用</a
+            >
+            <a
+              href="#interaction"
+              class="rounded-full border border-ink px-8 py-3 text-sm font-semibold tracking-[0.08em] text-ink transition duration-700 ease-out hover:bg-ink hover:text-bg"
+              >聯絡與合作</a
+            >
+          </div>
+        </div>
+        <div class="rounded-3xl border border-border bg-panel p-8 shadow-soft lg:col-span-4 lg:p-10">
+          <p class="text-sm tracking-[0.16em] text-gray">KEYWORDS</p>
+          <ul class="mt-6 space-y-4 text-lg">
+            <li>01. 極簡</li>
+            <li>02. 優雅</li>
+            <li>03. 平靜</li>
+          </ul>
+          <div class="mt-10 h-1 w-16 bg-accent"></div>
+        </div>
+      </section>
+
+      <section id="ui-components" class="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-16">
+        <div class="lg:col-span-4">
+          <h2 class="font-heading text-5xl leading-none">Logo System</h2>
+          <p class="mt-6 text-base leading-[1.7] text-gray">
+            文字標誌以高對比 Serif 建立優雅與秩序，保持寬鬆留白與穩定重心。
+          </p>
+        </div>
+        <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:col-span-8 lg:grid-cols-3">
+          <article class="rounded-3xl border border-border bg-panel p-8 transition duration-700 ease-out hover:-translate-y-1 hover:shadow-soft">
+            <p class="text-xs tracking-[0.14em] text-gray">WORDMARK</p>
+            <p class="mt-6 font-heading text-4xl">lee-chengfon</p>
+          </article>
+          <article class="rounded-3xl border border-border bg-panel p-8 transition duration-700 ease-out hover:-translate-y-1 hover:shadow-soft">
+            <p class="text-xs tracking-[0.14em] text-gray">STACKED</p>
+            <p class="mt-6 font-heading text-4xl leading-none">
+              lee-<br />chengfon
+            </p>
+          </article>
+          <article class="rounded-3xl border border-border bg-panel p-8 transition duration-700 ease-out hover:-translate-y-1 hover:shadow-soft">
+            <p class="text-xs tracking-[0.14em] text-gray">MONOGRAM</p>
+            <p class="mt-6 font-heading text-5xl">LC</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-16">
+        <div class="lg:col-span-4">
+          <h2 class="font-heading text-5xl leading-none">Color Palette</h2>
+          <p class="mt-6 text-base leading-[1.7] text-gray">
+            以莫蘭迪淺灰為核心，擴展為低飽和、柔和對比的平靜配色。
+          </p>
+        </div>
+        <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:col-span-8 lg:grid-cols-4">
+          <article class="overflow-hidden rounded-3xl border border-border bg-panel">
+            <div class="h-36 bg-ink"></div>
+            <div class="p-6">
+              <p class="text-xs tracking-[0.14em] text-gray">INK</p>
+              <p class="mt-2 font-semibold">#2E2B29</p>
+            </div>
+          </article>
+          <article class="overflow-hidden rounded-3xl border border-border bg-panel">
+            <div class="h-36 bg-bg"></div>
+            <div class="p-6">
+              <p class="text-xs tracking-[0.14em] text-gray">BG</p>
+              <p class="mt-2 font-semibold">#F4F2EF</p>
+            </div>
+          </article>
+          <article class="overflow-hidden rounded-3xl border border-border bg-panel">
+            <div class="h-36 bg-gray"></div>
+            <div class="p-6">
+              <p class="text-xs tracking-[0.14em] text-gray">GRAY</p>
+              <p class="mt-2 font-semibold">#6F6A65</p>
+            </div>
+          </article>
+          <article class="overflow-hidden rounded-3xl border border-border bg-panel">
+            <div class="h-36 bg-accent"></div>
+            <div class="p-6">
+              <p class="text-xs tracking-[0.14em] text-gray">ACCENT</p>
+              <p class="mt-2 font-semibold">#98A7B1</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-16">
+        <div class="lg:col-span-4">
+          <h2 class="font-heading text-5xl leading-none">Typography</h2>
+          <p class="mt-6 text-base leading-[1.7] text-gray">
+            標題使用 Cormorant Garamond，內文使用 Manrope，確保細節與易讀兼具。
+          </p>
+        </div>
+        <div class="rounded-3xl border border-border bg-panel p-8 lg:col-span-8 lg:p-12">
+          <div class="space-y-8">
+            <h1 class="font-heading text-6xl leading-none">Heading 1</h1>
+            <h2 class="font-heading text-5xl leading-none">Heading 2</h2>
+            <h3 class="font-heading text-4xl leading-none">Heading 3</h3>
+            <h4 class="font-heading text-3xl leading-none">Heading 4</h4>
+            <p class="max-w-3xl text-base leading-[1.75] text-gray sm:text-lg">
+              內文行高維持在 1.6 至 1.8，透過規律的段落節奏建立平靜閱讀感。
+              This line demonstrates bilingual readability in a calm visual rhythm.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-16">
+        <div class="lg:col-span-4">
+          <h2 class="font-heading text-5xl leading-none">Grid &amp; Spacing</h2>
+          <p class="mt-6 text-base leading-[1.7] text-gray">
+            所有間距採 8pt 系統，桌面採 12 欄網格，行動裝置自動堆疊。
+          </p>
+        </div>
+        <div class="space-y-8 lg:col-span-8">
+          <article class="rounded-3xl border border-border bg-panel p-8 lg:p-10">
+            <p class="mb-6 text-xs tracking-[0.14em] text-gray">8PT SPACING SCALE</p>
+            <div class="space-y-4">
+              <div class="flex items-center gap-4">
+                <span class="w-14 text-sm text-gray">8</span>
+                <div class="h-2 w-10 rounded bg-danger"></div>
+              </div>
+              <div class="flex items-center gap-4">
+                <span class="w-14 text-sm text-gray">16</span>
+                <div class="h-2 w-20 rounded bg-danger"></div>
+              </div>
+              <div class="flex items-center gap-4">
+                <span class="w-14 text-sm text-gray">24</span>
+                <div class="h-2 w-28 rounded bg-danger"></div>
+              </div>
+              <div class="flex items-center gap-4">
+                <span class="w-14 text-sm text-gray">32</span>
+                <div class="h-2 w-36 rounded bg-danger"></div>
+              </div>
+              <div class="flex items-center gap-4">
+                <span class="w-14 text-sm text-gray">40</span>
+                <div class="h-2 w-44 rounded bg-danger"></div>
+              </div>
+              <div class="flex items-center gap-4">
+                <span class="w-14 text-sm text-gray">48</span>
+                <div class="h-2 w-52 rounded bg-danger"></div>
+              </div>
+            </div>
+          </article>
+          <article class="rounded-3xl border border-border bg-panel p-8 lg:p-10">
+            <p class="mb-6 text-xs tracking-[0.14em] text-gray">12-COLUMN GRID</p>
+            <div class="grid grid-cols-4 gap-4 md:grid-cols-12">
+              <div class="h-16 rounded bg-primary/60"></div>
+              <div class="h-16 rounded bg-primary/60"></div>
+              <div class="h-16 rounded bg-primary/60"></div>
+              <div class="h-16 rounded bg-primary/60"></div>
+              <div class="h-16 rounded bg-primary/60"></div>
+              <div class="h-16 rounded bg-primary/60"></div>
+              <div class="h-16 rounded bg-primary/60"></div>
+              <div class="h-16 rounded bg-primary/60"></div>
+              <div class="h-16 rounded bg-primary/60"></div>
+              <div class="h-16 rounded bg-primary/60"></div>
+              <div class="h-16 rounded bg-primary/60"></div>
+              <div class="h-16 rounded bg-primary/60"></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-16">
+        <div class="lg:col-span-4">
+          <h2 class="font-heading text-5xl leading-none">UI Components</h2>
+          <p class="mt-6 text-base leading-[1.7] text-gray">
+            元件表面以細緻邊框與柔和陰影建立層次，互動維持安定節奏。
+          </p>
+        </div>
+        <div class="rounded-3xl border border-border bg-panel p-8 lg:col-span-8 lg:p-10">
+          <div class="flex flex-wrap items-center gap-4">
+            <button
+              class="rounded-full bg-ink px-8 py-3 text-sm font-semibold tracking-[0.08em] text-bg transition duration-700 ease-out hover:bg-accent hover:text-ink"
+            >
+              PRIMARY BUTTON
+            </button>
+            <button
+              class="rounded-full border border-ink bg-transparent px-8 py-3 text-sm font-semibold tracking-[0.08em] text-ink transition duration-700 ease-out hover:bg-ink hover:text-bg"
+            >
+              SECONDARY BUTTON
+            </button>
+          </div>
+          <div class="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-2">
+            <div class="space-y-4">
+              <label class="text-xs tracking-[0.14em] text-gray" for="brand-input">INPUT FIELD</label>
+              <input
+                id="brand-input"
+                type="text"
+                placeholder="輸入品牌語氣關鍵詞"
+                class="w-full rounded-2xl border border-border bg-bg px-6 py-4 text-base text-ink outline-none transition duration-500 ease-out placeholder:text-gray/80 hover:border-gray focus:border-accent"
+              />
+            </div>
+            <article
+              class="rounded-2xl border border-border bg-bg p-6 transition duration-700 ease-out hover:-translate-y-1 hover:border-accent hover:shadow-soft"
+            >
+              <p class="text-xs tracking-[0.14em] text-gray">CARD</p>
+              <h3 class="mt-4 font-heading text-3xl">Calm Interface</h3>
+              <p class="mt-3 text-sm leading-[1.75] text-gray">
+                以穩定對比與低飽和色彩呈現高質感畫面，確保內容優先。
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="interaction" class="rounded-3xl border border-border bg-panel p-8 shadow-soft lg:p-12">
+        <p class="text-xs tracking-[0.14em] text-gray">INTERACTION PRINCIPLE</p>
+        <h2 class="mt-6 font-heading text-5xl leading-none sm:text-6xl">
+          Motion Is Quiet Confidence
+        </h2>
+        <p class="mt-6 max-w-4xl text-base leading-[1.75] text-gray sm:text-lg">
+          所有互動維持 500ms 到 700ms 的 ease-out 節奏。畫面不追求速度，而是追求穩定與餘韻：
+          Hover 僅做微幅位移、色彩與陰影變化，讓品牌語氣保持平靜、優雅、克制。
+        </p>
+        <div class="mt-10 grid grid-cols-1 gap-8 md:grid-cols-2">
+          <div
+            class="rounded-2xl border border-border bg-bg p-8 transition duration-700 ease-out hover:-translate-y-1 hover:border-accent hover:shadow-soft"
+          >
+            <p class="text-sm text-gray">Hover: Surface Lift</p>
+            <p class="mt-3 text-xl">+ subtle elevation + border tint</p>
+          </div>
+          <div
+            class="rounded-2xl border border-border bg-bg p-8 transition duration-700 ease-out hover:bg-primary/45"
+          >
+            <p class="text-sm text-gray">Hover: Tone Shift</p>
+            <p class="mt-3 text-xl">+ calm transition + preserved readability</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
