@@ -8,9 +8,9 @@ const isPreview =
   process.env.SITE_ENV === 'branch-deploy';
 
 const categoryLabelMap: Record<string, string> = {
-  'ai-practice': 'AI 實戰',
-  'productivity-system': '效率系統',
-  'life-thinking': '人生思考',
+  'ai-practice': 'AI 幫了誰',
+  'productivity-system': '東拼西湊的產品',
+  'life-thinking': '思考不停',
 };
 
 const posts = (await getCollection('posts', ({ data }) => isPreview || !data.draft)).sort(
@@ -43,13 +43,13 @@ const DEFAULT_POST_COVER_ALT = 'lee-chingfon 預設文章封面';
 ---
 
 <BaseLayout
-  title="lee-chingfon | AI 工作流"
-  description="方向比速度重要，讓複利帶你走遠。打造自己的 AI 工作流，每天往前走一步。"
+  title="lee-chingfon | AI 幫了誰"
+  description="沒有走過不會知道路的盡頭比想像中的更加模糊。"
 >
   <section class="card stack">
     <p class="chip">BRAND GUIDELINES STYLE</p>
     <h1 class="hero-title">lee-chingfon</h1>
-    <p class="muted">方向比速度重要，讓複利帶你走遠。打造自己的 AI 工作流，每天往前走一步。</p>
+    <p class="muted">沒有走過不會知道路的盡頭比想像中的更加模糊。</p>
     <div class="btn-row">
       <a class="btn btn-primary" href="/posts/">所有的文章</a>
       <a class="btn btn-secondary" href="/projects/">我做的東西</a>
