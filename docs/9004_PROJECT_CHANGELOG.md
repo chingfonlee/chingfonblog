@@ -250,6 +250,27 @@
 
 ### CHG-20260301-09
 - 日期：2026-03-01
+- 階段：Documentation
+- 摘要：新增 Anthropic Agent Skills 參考指南，記錄 Skills 系統的使用方式、檔案結構、安裝步驟與自訂 Skill 範例。
+- 影響檔案：`docs/9013_ANTHROPIC_SKILLS_REFERENCE.md`、`docs/9004_PROJECT_CHANGELOG.md`
+- 備註：來源為 `https://github.com/anthropics/skills`，供未來專案導入 Skill 時參考。
+
+### CHG-20260301-10
+- 日期：2026-03-01
+- 階段：Tooling
+- 摘要：下載官方 Anthropic Skills 至專案本機 `skills/` 資料夾。
+- 影響檔案：`skills/*`、`docs/9004_PROJECT_CHANGELOG.md`
+- 備註：依據 `docs/9013_ANTHROPIC_SKILLS_REFERENCE.md` 的指引，將官方開源的 Skills（如 docx, examples 等）匯入專案，以備後續自動化使用。
+
+### CHG-20260301-11
+- 日期：2026-03-01
+- 階段：IA (Information Architecture) Refactor
+- 摘要：優化了首頁 (`index.astro`) 與文章頁 (`posts/index.astro`) 的資訊架構，對齊單一聚焦點的置中排版。
+- 影響檔案：`src/pages/index.astro`、`src/pages/posts/index.astro`、`docs/9004_PROJECT_CHANGELOG.md`
+- 備註：純粹搬移 HTML 結構節點 (Node)，首頁的 Navigation 轉換為置中篩選列型態、精選文章卡片移除干擾標題；無新增文案、無修改視覺風格。
+
+### CHG-20260301-09
+- 日期：2026-03-01
 - 階段：Homepage Copy Update
 - 摘要：更新首頁主文案與分類標籤文案。
 - 影響檔案：`src/pages/index.astro`、`docs/9004_PROJECT_CHANGELOG.md`
