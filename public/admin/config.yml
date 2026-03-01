@@ -3,6 +3,7 @@ backend:
   branch: main
 
 publish_mode: editorial_workflow
+show_preview_links: true
 
 site_url: https://leechingfon.netlify.app
 display_url: https://leechingfon.netlify.app
@@ -17,6 +18,8 @@ collections:
   - name: posts
     label: Posts
     label_singular: Post
+    identifier_field: slug
+    summary: '{{title}} · {{category}} · {{pubDate}}'
     folder: src/content/posts
     create: true
     extension: md
@@ -31,6 +34,19 @@ collections:
       - label: Description
         name: description
         widget: text
+
+      - label: Category
+        name: category
+        widget: select
+        default: life-thinking
+        options:
+          - label: AI 實戰
+            value: ai-practice
+          - label: 效率系統
+            value: productivity-system
+          - label: 人生思考
+            value: life-thinking
+        hint: 'Required. Must match Astro content schema enum.'
 
       - label: Published Date
         name: pubDate
@@ -56,6 +72,14 @@ collections:
         name: tags
         widget: list
         required: false
+        hint: 'Use lowercase slug tags. Add "featured" to show this post in homepage featured section.'
+        field:
+          label: Tag
+          name: tag
+          widget: string
+          pattern:
+            - '^[a-z0-9-]+$'
+            - 'Use lowercase letters, numbers, and hyphens only.'
 
       - label: Draft
         name: draft
@@ -66,6 +90,7 @@ collections:
         name: coverImage
         widget: image
         required: false
+        hint: 'Cloudinary URL only. Do not store uploaded content images in repo.'
         media_library:
           config:
             multiple: false
@@ -79,6 +104,10 @@ collections:
         name: canonicalURL
         widget: string
         required: false
+        hint: 'Absolute URL, e.g. https://leechingfon.netlify.app/posts/your-slug'
+        pattern:
+          - '^https?://.+'
+          - 'Use an absolute URL.'
 
       - label: Body
         name: body

@@ -191,3 +191,17 @@
 - 摘要：將 `index.html` 品牌視覺風格整合到 Astro 正式頁面與版型。
 - 影響檔案：`src/layouts/BaseLayout.astro`、`src/pages/index.astro`、`src/pages/posts/index.astro`、`src/pages/posts/[slug].astro`、`docs/9004_PROJECT_CHANGELOG.md`
 - 備註：套用同色彩與質感背景、Swei Spring 字體、Hero/CTA 與卡片風格，確保部署站風格一致。
+
+### CHG-20260301-01
+- 日期：2026-03-01
+- 階段：Design System Transplant
+- 摘要：完成設計系統移植第一輪，新增 category schema、首頁 IA 重構與 posts query 篩選。
+- 影響檔案：`docs/9012_DESIGN_TRANSPLANT_PLAN.md`、`src/content.config.ts`、`src/layouts/BaseLayout.astro`、`src/pages/index.astro`、`src/pages/posts/index.astro`、`docs/9004_PROJECT_CHANGELOG.md`
+- 備註：維持 Decap/CI/Netlify 流程不變；`?category=` 採 static + client-side filtering 實作。
+
+### CHG-20260301-02
+- 日期：2026-03-01
+- 階段：Decap Alignment
+- 摘要：調整 Decap CMS 後台欄位，對齊 posts schema 的 category enum 與 featured/tag 規則。
+- 影響檔案：`public/admin/config.yml`、`public/admin/index.html`、`docs/9004_PROJECT_CHANGELOG.md`
+- 備註：保留 `publish_mode: editorial_workflow` 與 `git-gateway`；新增欄位提示以降低編輯錯誤。

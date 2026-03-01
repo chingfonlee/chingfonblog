@@ -7,36 +7,123 @@ const isPreview =
   process.env.SITE_ENV === 'deploy-preview' ||
   process.env.SITE_ENV === 'branch-deploy';
 
+const categoryOptions = [
+  { value: 'ai-practice', label: 'AI 實戰' },
+  { value: 'productivity-system', label: '效率系統' },
+  { value: 'life-thinking', label: '人生思考' },
+] as const;
+
+const categoryLabelMap: Record<string, string> = {
+  'ai-practice': 'AI 實戰',
+  'productivity-system': '效率系統',
+  'life-thinking': '人生思考',
+};
+
 const posts = (await getCollection('posts', ({ data }) => isPreview || !data.draft)).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
+
+const getCategoryLabel = (category: string) => categoryLabelMap[category] ?? '人生思考';
 ---
 
 <BaseLayout title="Posts | lee-chingfon" description="Post index for lee-chingfon blog.">
   <section class="card stack">
-    <h1>Posts</h1>
-    <p class="muted">
-      {isPreview ? 'Preview/dev mode shows drafts.' : 'Production mode lists published posts only.'}
-    </p>
+    <div class="section-head">
+      <h1 class="section-title">Posts</h1>
+      <p class="section-subtitle">
+        {isPreview ? 'Preview/dev mode shows drafts.' : 'Production mode lists published posts only.'}
+      </p>
+    </div>
+
+    <div class="btn-row" id="category-filters">
+      <a class="category-link" data-category="all" href="/posts/">全部</a>
+      {
+        categoryOptions.map((category) => (
+          <a class="category-link" data-category={category.value} href={`/posts/?category=${category.value}`}>
+            {category.label}
+          </a>
+        ))
+      }
+    </div>
+
+    <p id="filter-status" class="status-note">目前顯示全部文章。</p>
+  </section>
+
+  <section class="stack">
     {
       posts.length === 0 ? (
-        <p>No posts available in this mode.</p>
+        <p class="card empty-state">No posts available in this mode.</p>
       ) : (
-        <ul class="clean stack">
-          {posts.map((post) => (
-            <li class="card">
-              <a class="post-link" href={`/posts/${post.slug}/`}>
-                <strong>{post.data.title}</strong>
-              </a>
-              <div>{post.data.description}</div>
-              <div class="muted">
-                {post.data.pubDate.toISOString().slice(0, 10)}
-                {post.data.draft ? ' · draft' : ''}
-              </div>
-            </li>
-          ))}
-        </ul>
+        <>
+          <ul id="post-list" class="clean post-grid">
+            {posts.map((post) => (
+              <li class="card card-hover stack post-item" data-category={post.data.category}>
+                <p class="meta-line">
+                  {post.data.pubDate.toISOString().slice(0, 10)}
+                  {post.data.draft ? ' · draft' : ''}
+                </p>
+                <div class="btn-row">
+                  <span class="category-tag">{getCategoryLabel(post.data.category)}</span>
+                  {post.data.tags.includes('featured') ? <span class="category-tag">featured</span> : null}
+                </div>
+                <a class="post-link" href={`/posts/${post.slug}/`}>
+                  <strong>{post.data.title}</strong>
+                </a>
+                <div class="muted">{post.data.description}</div>
+              </li>
+            ))}
+          </ul>
+          <p id="empty-message" class="card empty-state" hidden>此分類目前沒有文章。</p>
+        </>
       )
     }
   </section>
+
+  <script is:inline>
+    (() => {
+      const validCategories = ['ai-practice', 'productivity-system', 'life-thinking'];
+      const categoryLabels = {
+        'ai-practice': 'AI 實戰',
+        'productivity-system': '效率系統',
+        'life-thinking': '人生思考',
+      };
+
+      const params = new URLSearchParams(window.location.search);
+      const rawCategory = params.get('category');
+      const selectedCategory = rawCategory && validCategories.includes(rawCategory) ? rawCategory : 'all';
+      const hasInvalidCategory = Boolean(rawCategory) && !validCategories.includes(rawCategory);
+
+      const status = document.getElementById('filter-status');
+      const emptyMessage = document.getElementById('empty-message');
+      const items = Array.from(document.querySelectorAll('.post-item'));
+      const links = Array.from(document.querySelectorAll('.category-link'));
+
+      let visibleCount = 0;
+      for (const item of items) {
+        const itemCategory = item.getAttribute('data-category');
+        const visible = selectedCategory === 'all' || itemCategory === selectedCategory;
+        item.hidden = !visible;
+        if (visible) visibleCount += 1;
+      }
+
+      for (const link of links) {
+        const isActive = link.getAttribute('data-category') === selectedCategory;
+        link.classList.toggle('is-active', isActive);
+      }
+
+      if (status) {
+        if (hasInvalidCategory) {
+          status.textContent = '無效的 category 參數，已回退為全部文章。';
+        } else if (selectedCategory === 'all') {
+          status.textContent = '目前顯示全部文章。';
+        } else {
+          status.textContent = `目前顯示分類：${categoryLabels[selectedCategory] ?? selectedCategory}`;
+        }
+      }
+
+      if (emptyMessage) {
+        emptyMessage.hidden = visibleCount !== 0;
+      }
+    })();
+  </script>
 </BaseLayout>

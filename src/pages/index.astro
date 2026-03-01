@@ -7,9 +7,39 @@ const isPreview =
   process.env.SITE_ENV === 'deploy-preview' ||
   process.env.SITE_ENV === 'branch-deploy';
 
+const categoryOptions = [
+  {
+    value: 'ai-practice',
+    label: 'AI 實戰',
+    description: '聚焦可落地的 AI 工作流、工具選型與實作經驗。',
+  },
+  {
+    value: 'productivity-system',
+    label: '效率系統',
+    description: '整理個人與團隊的流程設計，建立可持續的輸出節奏。',
+  },
+  {
+    value: 'life-thinking',
+    label: '人生思考',
+    description: '以平靜視角記錄決策、學習與長期主義的觀察。',
+  },
+] as const;
+
+const categoryLabelMap: Record<string, string> = {
+  'ai-practice': 'AI 實戰',
+  'productivity-system': '效率系統',
+  'life-thinking': '人生思考',
+};
+
 const posts = (await getCollection('posts', ({ data }) => isPreview || !data.draft)).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
+
+const featuredPosts = posts.filter((post) => post.data.tags.includes('featured')).slice(0, 3);
+const featuredSlugs = new Set(featuredPosts.map((post) => post.slug));
+const latestPosts = posts.filter((post) => !featuredSlugs.has(post.slug)).slice(0, 6);
+
+const getCategoryLabel = (category: string) => categoryLabelMap[category] ?? '人生思考';
 ---
 
 <BaseLayout
@@ -19,43 +49,109 @@ const posts = (await getCollection('posts', ({ data }) => isPreview || !data.dra
   <section class="card stack">
     <p class="chip">BRAND GUIDELINES STYLE</p>
     <h1 class="hero-title">lee-chingfon</h1>
-    <p class="muted">
-      以極簡的秩序承載優雅細節，讓視覺在平靜中留下清晰而長久的感受。
-    </p>
-    <p class="muted">
-      我專注於打造高質感品牌網站與內容系統，讓品牌在第一眼就傳達清楚、沈著與可信任。
-    </p>
+    <p class="muted">以極簡的秩序承載優雅細節，讓視覺在平靜中留下清晰而長久的感受。</p>
+    <p class="muted">專注於 AI、效率系統與人生思考，建立可持續的內容與品牌信任。</p>
     <div class="btn-row">
-      <a class="btn btn-primary" href="/posts/">看作品應用</a>
-      <a class="btn btn-secondary" href="/admin/">聯絡與合作</a>
+      <a class="btn btn-primary btn-emphasis" href="/posts/">閱讀文章</a>
+      <a class="btn btn-secondary" href="/posts/?category=ai-practice">從 AI 實戰開始</a>
     </div>
-    <p class="muted">
-      Visibility mode:
-      {isPreview ? 'preview/dev includes drafts' : 'production build excludes drafts'}.
+    <p class="status-note">
+      Visibility mode: {isPreview ? 'preview/dev includes drafts' : 'production build excludes drafts'}.
     </p>
   </section>
 
-  <section class="card stack" style="margin-top: 1rem;">
-    <h2>Posts</h2>
+  <section class="stack">
+    <div class="section-head">
+      <h2 class="section-title">三大主題入口</h2>
+      <p class="section-subtitle">依主題快速進入文章列表，支援 `?category=` 篩選。</p>
+    </div>
+    <ul class="clean grid-3">
+      {
+        categoryOptions.map((category) => (
+          <li class="card card-hover stack">
+            <p class="chip">CATEGORY</p>
+            <h3>{category.label}</h3>
+            <p class="muted">{category.description}</p>
+            <div>
+              <a class="btn btn-secondary" href={`/posts/?category=${category.value}`}>
+                查看主題文章
+              </a>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="stack">
+    <div class="section-head">
+      <h2 class="section-title">精選文章</h2>
+      <p class="section-subtitle">使用 tags 包含 `featured` 的文章作為首頁精選區塊。</p>
+    </div>
     {
-      posts.length === 0 ? (
-        <p class="muted">No published posts are available in the current build mode.</p>
+      featuredPosts.length === 0 ? (
+        <p class="card empty-state">目前尚未設定精選文章，請為文章加入 `featured` tag。</p>
       ) : (
-        <ul class="clean stack">
-          {posts.map((post) => (
-            <li class="card">
+        <ul class="clean post-grid">
+          {featuredPosts.map((post) => (
+            <li class="card card-hover stack">
+              <p class="meta-line">
+                {post.data.pubDate.toISOString().slice(0, 10)}
+                {post.data.draft ? ' · draft' : ''}
+              </p>
+              <div class="btn-row">
+                <span class="category-tag">{getCategoryLabel(post.data.category)}</span>
+                <span class="category-tag">featured</span>
+              </div>
               <a class="post-link" href={`/posts/${post.slug}/`}>
                 <strong>{post.data.title}</strong>
               </a>
-              <div class="muted">{post.data.description}</div>
-              <div class="muted">
-                {post.data.pubDate.toISOString().slice(0, 10)}
-                {post.data.draft ? ' · draft' : ''}
-              </div>
+              <p class="muted">{post.data.description}</p>
             </li>
           ))}
         </ul>
       )
     }
+  </section>
+
+  <section class="stack">
+    <div class="section-head">
+      <h2 class="section-title">最新文章</h2>
+      <p class="section-subtitle">依發佈時間排序，並排除已列入精選的文章。</p>
+    </div>
+    {
+      latestPosts.length === 0 ? (
+        <p class="card empty-state">目前沒有可顯示的最新文章。</p>
+      ) : (
+        <ul class="clean post-grid">
+          {latestPosts.map((post) => (
+            <li class="card card-hover stack">
+              <p class="meta-line">
+                {post.data.pubDate.toISOString().slice(0, 10)}
+                {post.data.draft ? ' · draft' : ''}
+              </p>
+              <div class="btn-row">
+                <span class="category-tag">{getCategoryLabel(post.data.category)}</span>
+              </div>
+              <a class="post-link" href={`/posts/${post.slug}/`}>
+                <strong>{post.data.title}</strong>
+              </a>
+              <p class="muted">{post.data.description}</p>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </section>
+
+  <section class="card stack">
+    <div class="section-head">
+      <h2 class="section-title">About / CTA</h2>
+      <p class="section-subtitle">我持續整理可實作的方法論，讓內容與設計一起建立長期價值。</p>
+    </div>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="/posts/">查看全部文章</a>
+      <a class="btn btn-secondary" href="/admin/">進入 CMS</a>
+    </div>
   </section>
 </BaseLayout>
