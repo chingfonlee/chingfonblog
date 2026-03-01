@@ -66,17 +66,28 @@ const getCategoryLabel = (category: string) => categoryLabelMap[category] ?? '�
       featuredPosts.length === 0 ? (
         <p class="card empty-state">目前尚未有文章。</p>
       ) : (
-        <ul class="clean post-grid">
+        <ul class="clean grid-3">
           {featuredPosts.map((post) => (
-            <li class="card card-hover stack">
-              <p class="meta-line">
-                {post.data.pubDate.toISOString().slice(0, 10)}
+            <li class="card card-hover stack post-item">
+              {post.data.coverImage && (
+                <div class="post-cover">
+                  <img src={post.data.coverImage} alt={post.data.coverImageAlt || ''} loading="lazy" />
+                  <div class="cover-tags">
+                    {post.data.tags.includes('featured') && <span class="category-tag tag-featured">精選</span>}
+                    <span class="category-tag">{getCategoryLabel(post.data.category)}</span>
+                  </div>
+                </div>
+              )}
+              {!post.data.coverImage && (
+                <div class="btn-row">
+                  {post.data.tags.includes('featured') && <span class="category-tag tag-featured">精選</span>}
+                  <span class="category-tag">{getCategoryLabel(post.data.category)}</span>
+                </div>
+              )}
+              <p class="meta-line" style={post.data.coverImage ? "margin-top: 0.5rem;" : ""}>
+                {post.data.pubDate.toISOString().slice(0, 10).replace(/-/g, '/')}
                 {post.data.draft ? ' · draft' : ''}
               </p>
-              <div class="btn-row">
-                <span class="category-tag">{getCategoryLabel(post.data.category)}</span>
-                {post.data.tags.includes('featured') && <span class="category-tag">featured</span>}
-              </div>
               <a class="post-link" href={`/posts/${post.slug}/`}>
                 <strong>{post.data.title}</strong>
               </a>
@@ -97,7 +108,7 @@ const getCategoryLabel = (category: string) => categoryLabelMap[category] ?? '�
       projects.length === 0 ? (
         <p class="card empty-state">目前還沒有公開的專案。</p>
       ) : (
-        <ul class="clean post-grid">
+        <ul class="clean grid-3">
           {projects.map((item) => (
             <li class="card card-hover stack">
               {item.data.pubDate && (
@@ -132,7 +143,7 @@ const getCategoryLabel = (category: string) => categoryLabelMap[category] ?? '�
       tools.length === 0 ? (
         <p class="card empty-state">目前還沒有推薦的工具。</p>
       ) : (
-        <ul class="clean post-grid">
+        <ul class="clean grid-3">
           {tools.map((item) => (
             <li class="card card-hover stack">
               {item.data.pubDate && (

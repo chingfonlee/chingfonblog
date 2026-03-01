@@ -206,9 +206,23 @@
 - 影響檔案：`public/admin/config.yml`、`public/admin/index.html`、`docs/9004_PROJECT_CHANGELOG.md`
 - 備註：保留 `publish_mode: editorial_workflow` 與 `git-gateway`；新增欄位提示以降低編輯錯誤。
 
+### CHG-20260301-05
+- 日期：2026-03-01
+- 階段：Decap Cloudinary Setup
+- 摘要：填入 Cloudinary cloud name、api key 與預設上傳資料夾。
+- 影響檔案：`public/admin/config.yml`、`docs/9004_PROJECT_CHANGELOG.md`
+- 備註：僅使用前端可公開參數；`api_secret` 不入版控。
+
 ### CHG-20260301-03
 - 日期：2026-03-01
 - 階段：Structural Redesign
 - 摘要：新增 `projects` 與 `tools` Content Collections，並重構首頁為三大區塊架構。更新 Decap CMS 與導覽列。
 - 影響檔案：`src/content.config.ts`、`src/pages/projects/index.astro`、`src/pages/tools/index.astro`、`src/pages/index.astro`、`src/layouts/BaseLayout.astro`、`public/admin/config.yml`、`docs/2002_CONTENT_MODEL_SPEC.md`
 - 備註：配合設計要求將單一文章流改為以專案/工具並重的展示架構。
+
+### CHG-20260301-04
+- 日期：2026-03-01
+- 階段：UI Layout Redesign 
+- 摘要：更新 Blog 與首頁的文章列表，採用三欄式 (3-column grid) 圖片卡片設計，並支援絕對定位標籤 (Featured/Category)。
+- 影響檔案：`src/layouts/BaseLayout.astro`、`src/pages/index.astro`、`src/pages/posts/index.astro`
+- 備註：為符合參考設計的視覺呈現所作的排版與 CSS 重構。

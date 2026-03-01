@@ -11,8 +11,9 @@ display_url: https://leechingfon.netlify.app
 media_library:
   name: cloudinary
   config:
-    cloud_name: YOUR_CLOUDINARY_CLOUD_NAME
-    api_key: YOUR_CLOUDINARY_API_KEY
+    cloud_name: dwobro2s5
+    api_key: "516225526957944"
+    folder: blog/posts
 
 collections:
   - name: posts
