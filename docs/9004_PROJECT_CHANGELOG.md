@@ -191,3 +191,45 @@
 - 摘要：將 `index.html` 品牌視覺風格整合到 Astro 正式頁面與版型。
 - 影響檔案：`src/layouts/BaseLayout.astro`、`src/pages/index.astro`、`src/pages/posts/index.astro`、`src/pages/posts/[slug].astro`、`docs/9004_PROJECT_CHANGELOG.md`
 - 備註：套用同色彩與質感背景、Swei Spring 字體、Hero/CTA 與卡片風格，確保部署站風格一致。
+
+### CHG-20260301-01
+- 日期：2026-03-01
+- 階段：Design System Transplant
+- 摘要：完成設計系統移植第一輪，新增 category schema、首頁 IA 重構與 posts query 篩選。
+- 影響檔案：`docs/9012_DESIGN_TRANSPLANT_PLAN.md`、`src/content.config.ts`、`src/layouts/BaseLayout.astro`、`src/pages/index.astro`、`src/pages/posts/index.astro`、`docs/9004_PROJECT_CHANGELOG.md`
+- 備註：維持 Decap/CI/Netlify 流程不變；`?category=` 採 static + client-side filtering 實作。
+
+### CHG-20260301-02
+- 日期：2026-03-01
+- 階段：Decap Alignment
+- 摘要：調整 Decap CMS 後台欄位，對齊 posts schema 的 category enum 與 featured/tag 規則。
+- 影響檔案：`public/admin/config.yml`、`public/admin/index.html`、`docs/9004_PROJECT_CHANGELOG.md`
+- 備註：保留 `publish_mode: editorial_workflow` 與 `git-gateway`；新增欄位提示以降低編輯錯誤。
+
+### CHG-20260301-05
+- 日期：2026-03-01
+- 階段：Decap Cloudinary Setup
+- 摘要：填入 Cloudinary cloud name、api key 與預設上傳資料夾。
+- 影響檔案：`public/admin/config.yml`、`docs/9004_PROJECT_CHANGELOG.md`
+- 備註：僅使用前端可公開參數；`api_secret` 不入版控。
+
+### CHG-20260301-06
+- 日期：2026-03-01
+- 階段：Cover Fallback
+- 摘要：導入半自動預設封面：Decap 新文章預設 coverImage/coverImageAlt，前台列表頁缺圖時自動 fallback。
+- 影響檔案：`public/admin/config.yml`、`src/pages/index.astro`、`src/pages/posts/index.astro`、`docs/9004_PROJECT_CHANGELOG.md`
+- 備註：採用 Cloudinary sample 圖作為預設，後續可替換成品牌專用封面 URL。
+
+### CHG-20260301-03
+- 日期：2026-03-01
+- 階段：Structural Redesign
+- 摘要：新增 `projects` 與 `tools` Content Collections，並重構首頁為三大區塊架構。更新 Decap CMS 與導覽列。
+- 影響檔案：`src/content.config.ts`、`src/pages/projects/index.astro`、`src/pages/tools/index.astro`、`src/pages/index.astro`、`src/layouts/BaseLayout.astro`、`public/admin/config.yml`、`docs/2002_CONTENT_MODEL_SPEC.md`
+- 備註：配合設計要求將單一文章流改為以專案/工具並重的展示架構。
+
+### CHG-20260301-04
+- 日期：2026-03-01
+- 階段：UI Layout Redesign 
+- 摘要：更新 Blog 與首頁的文章列表，採用三欄式 (3-column grid) 圖片卡片設計，並支援絕對定位標籤 (Featured/Category)。
+- 影響檔案：`src/layouts/BaseLayout.astro`、`src/pages/index.astro`、`src/pages/posts/index.astro`
+- 備註：為符合參考設計的視覺呈現所作的排版與 CSS 重構。

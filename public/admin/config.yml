@@ -3,6 +3,7 @@ backend:
   branch: main
 
 publish_mode: editorial_workflow
+show_preview_links: true
 
 site_url: https://leechingfon.netlify.app
 display_url: https://leechingfon.netlify.app
@@ -10,13 +11,16 @@ display_url: https://leechingfon.netlify.app
 media_library:
   name: cloudinary
   config:
-    cloud_name: YOUR_CLOUDINARY_CLOUD_NAME
-    api_key: YOUR_CLOUDINARY_API_KEY
+    cloud_name: dwobro2s5
+    api_key: "516225526957944"
+    folder: blog/posts
 
 collections:
   - name: posts
     label: Posts
     label_singular: Post
+    identifier_field: slug
+    summary: '{{title}} · {{category}} · {{pubDate}}'
     folder: src/content/posts
     create: true
     extension: md
@@ -31,6 +35,19 @@ collections:
       - label: Description
         name: description
         widget: text
+
+      - label: Category
+        name: category
+        widget: select
+        default: life-thinking
+        options:
+          - label: AI 實戰
+            value: ai-practice
+          - label: 效率系統
+            value: productivity-system
+          - label: 人生思考
+            value: life-thinking
+        hint: 'Required. Must match Astro content schema enum.'
 
       - label: Published Date
         name: pubDate
@@ -56,6 +73,14 @@ collections:
         name: tags
         widget: list
         required: false
+        hint: 'Use lowercase slug tags. Add "featured" to show this post in homepage featured section.'
+        field:
+          label: Tag
+          name: tag
+          widget: string
+          pattern:
+            - '^[a-z0-9-]+$'
+            - 'Use lowercase letters, numbers, and hyphens only.'
 
       - label: Draft
         name: draft
@@ -66,6 +91,8 @@ collections:
         name: coverImage
         widget: image
         required: false
+        default: https://res.cloudinary.com/dwobro2s5/image/upload/f_auto,q_auto,c_fill,ar_16:9,w_1600/sample
+        hint: 'Cloudinary URL only. Default cover is auto-filled; replace it per post when needed.'
         media_library:
           config:
             multiple: false
@@ -74,12 +101,57 @@ collections:
         name: coverImageAlt
         widget: string
         required: false
+        default: "lee-chingfon 預設文章封面"
 
       - label: Canonical URL
         name: canonicalURL
         widget: string
         required: false
+        hint: 'Absolute URL, e.g. https://leechingfon.netlify.app/posts/your-slug'
+        pattern:
+          - '^https?://.+'
+          - 'Use an absolute URL.'
 
       - label: Body
         name: body
         widget: markdown
+
+  - name: projects
+    label: Projects
+    label_singular: Project
+    folder: src/content/projects
+    create: true
+    extension: md
+    format: frontmatter
+    slug: '{{slug}}'
+    fields:
+      - {label: Title, name: title, widget: string}
+      - {label: Description, name: description, widget: text}
+      - label: Link
+        name: link
+        widget: string
+        required: false
+        pattern: ['^https?://.+', 'Must be a valid URL starting with http:// or https://']
+      - {label: Published Date, name: pubDate, widget: datetime, format: YYYY-MM-DD, time_format: false, required: false}
+      - {label: Draft, name: draft, widget: boolean, default: false}
+      - {label: Body, name: body, widget: markdown, required: false}
+
+  - name: tools
+    label: Tools
+    label_singular: Tool
+    folder: src/content/tools
+    create: true
+    extension: md
+    format: frontmatter
+    slug: '{{slug}}'
+    fields:
+      - {label: Title, name: title, widget: string}
+      - {label: Description, name: description, widget: text}
+      - label: Link
+        name: link
+        widget: string
+        required: false
+        pattern: ['^https?://.+', 'Must be a valid URL starting with http:// or https://']
+      - {label: Published Date, name: pubDate, widget: datetime, format: YYYY-MM-DD, time_format: false, required: false}
+      - {label: Draft, name: draft, widget: boolean, default: false}
+      - {label: Body, name: body, widget: markdown, required: false}

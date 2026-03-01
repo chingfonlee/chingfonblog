@@ -1,0 +1,59 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const isPreview =
+  import.meta.env.DEV ||
+  process.env.SITE_ENV === 'deploy-preview' ||
+  process.env.SITE_ENV === 'branch-deploy';
+
+const tools = (await getCollection('tools', ({ data }) => isPreview || !data.draft)).sort(
+  (a, b) => {
+    const aDate = a.data.pubDate ? a.data.pubDate.valueOf() : 0;
+    const bDate = b.data.pubDate ? b.data.pubDate.valueOf() : 0;
+    return bDate - aDate;
+  }
+);
+---
+
+<BaseLayout title="推薦工具 | lee-chingfon" description="Recommended tools by lee-chingfon.">
+  <section class="card stack">
+    <div class="section-head">
+      <h1 class="section-title">推薦工具</h1>
+      <p class="section-subtitle">
+        我實際用過、覺得值得推薦的工具與資源。
+      </p>
+    </div>
+  </section>
+
+  <section class="stack">
+    {
+      tools.length === 0 ? (
+        <p class="card empty-state">目前還沒有推薦的工具。</p>
+      ) : (
+        <ul class="clean post-grid">
+          {tools.map((item) => (
+            <li class="card card-hover stack">
+              {item.data.pubDate && (
+                <p class="meta-line">
+                  {item.data.pubDate.toISOString().slice(0, 10)}
+                  {item.data.draft ? ' · draft' : ''}
+                </p>
+              )}
+              {item.data.link ? (
+                <a class="post-link" href={item.data.link}>
+                  <strong>{item.data.title}</strong>
+                </a>
+              ) : (
+                <div class="post-link">
+                  <strong>{item.data.title}</strong>
+                </div>
+              )}
+              <div class="muted">{item.data.description}</div>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </section>
+</BaseLayout>

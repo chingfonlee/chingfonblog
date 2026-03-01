@@ -5,6 +5,8 @@ const cloudinaryUrl = z
   .url()
   .regex(/^https:\/\/res\.cloudinary\.com\//, 'coverImage must be a Cloudinary URL');
 
+const postCategory = z.enum(['ai-practice', 'productivity-system', 'life-thinking']);
+
 const posts = defineCollection({
   type: 'content',
   schema: z
@@ -13,6 +15,7 @@ const posts = defineCollection({
       description: z.string().min(1),
       pubDate: z.coerce.date(),
       dateModified: z.coerce.date().optional(),
+      category: postCategory.default('life-thinking'),
       tags: z.array(z.string().regex(/^[a-z0-9-]+$/)).default([]),
       draft: z.boolean().default(true),
       coverImage: cloudinaryUrl.optional(),
@@ -38,6 +41,30 @@ const posts = defineCollection({
     }),
 });
 
+const projects = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string().min(1),
+    description: z.string().min(1),
+    link: z.string().url().optional(),
+    pubDate: z.coerce.date().optional(),
+    draft: z.boolean().default(false),
+  }),
+});
+
+const tools = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string().min(1),
+    description: z.string().min(1),
+    link: z.string().url().optional(),
+    pubDate: z.coerce.date().optional(),
+    draft: z.boolean().default(false),
+  }),
+});
+
 export const collections = {
   posts,
+  projects,
+  tools,
 };

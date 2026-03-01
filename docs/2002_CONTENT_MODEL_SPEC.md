@@ -8,6 +8,7 @@
 | --- | --- | --- | --- |
 | `title` | 是 | `string` | 文章標題，建議 8-80 字元 |
 | `description` | 是 | `string` | 摘要，建議 30-160 字元 |
+| `category` | 是 | `string` | 分類：`ai-practice`、`productivity-system` 或 `life-thinking` |
 | `pubDate` | 是 | `date` | 發布日期 |
 | `dateModified` | 否 | `date` | 更新日期，需大於等於 `pubDate` |
 | `slug` | 是 | `string` | `^[a-z0-9-]+$`，全站唯一；Astro 以保留欄位方式處理 |
@@ -16,6 +17,15 @@
 | `coverImage` | 否 | `string(url)` | 僅允許 Cloudinary HTTPS URL |
 | `coverImageAlt` | 否 | `string` | 有 `coverImage` 時必填 |
 | `canonicalURL` | 否 | `string(url)` | 需要跨站正規化時使用 |
+
+## projects 與 tools 欄位定義
+| 欄位 | 必填 | 型別 | 規則 |
+| --- | --- | --- | --- |
+| `title` | 是 | `string` | 專案或工具名稱 |
+| `description` | 是 | `string` | 簡短說明 |
+| `link` | 否 | `string(url)` | 外部連結 URL |
+| `pubDate` | 否 | `date` | 發布或收錄日期 |
+| `draft` | 否 | `boolean` | 預設 `false` |
 
 ## draft 行為
 - `draft: true`：
@@ -39,6 +49,7 @@
 ---
 title: "Astro + Decap 架構筆記"
 description: "以 Astro 建站、Decap 編輯、Netlify 部署的最小可行流程。"
+category: "productivity-system"
 pubDate: 2026-02-26
 dateModified: 2026-02-26
 slug: "astro-decap-netlify-stack"
