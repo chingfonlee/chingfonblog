@@ -112,3 +112,43 @@ collections:
       - label: Body
         name: body
         widget: markdown
+
+  - name: projects
+    label: Projects
+    label_singular: Project
+    folder: src/content/projects
+    create: true
+    extension: md
+    format: frontmatter
+    slug: '{{slug}}'
+    fields:
+      - {label: Title, name: title, widget: string}
+      - {label: Description, name: description, widget: text}
+      - label: Link
+        name: link
+        widget: string
+        required: false
+        pattern: ['^https?://.+', 'Must be a valid URL starting with http:// or https://']
+      - {label: Published Date, name: pubDate, widget: datetime, format: YYYY-MM-DD, time_format: false, required: false}
+      - {label: Draft, name: draft, widget: boolean, default: false}
+      - {label: Body, name: body, widget: markdown, required: false}
+
+  - name: tools
+    label: Tools
+    label_singular: Tool
+    folder: src/content/tools
+    create: true
+    extension: md
+    format: frontmatter
+    slug: '{{slug}}'
+    fields:
+      - {label: Title, name: title, widget: string}
+      - {label: Description, name: description, widget: text}
+      - label: Link
+        name: link
+        widget: string
+        required: false
+        pattern: ['^https?://.+', 'Must be a valid URL starting with http:// or https://']
+      - {label: Published Date, name: pubDate, widget: datetime, format: YYYY-MM-DD, time_format: false, required: false}
+      - {label: Draft, name: draft, widget: boolean, default: false}
+      - {label: Body, name: body, widget: markdown, required: false}

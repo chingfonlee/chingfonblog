@@ -41,6 +41,30 @@ const posts = defineCollection({
     }),
 });
 
+const projects = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string().min(1),
+    description: z.string().min(1),
+    link: z.string().url().optional(),
+    pubDate: z.coerce.date().optional(),
+    draft: z.boolean().default(false),
+  }),
+});
+
+const tools = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string().min(1),
+    description: z.string().min(1),
+    link: z.string().url().optional(),
+    pubDate: z.coerce.date().optional(),
+    draft: z.boolean().default(false),
+  }),
+});
+
 export const collections = {
   posts,
+  projects,
+  tools,
 };
