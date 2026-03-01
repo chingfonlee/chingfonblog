@@ -233,3 +233,17 @@
 - 摘要：更新 Blog 與首頁的文章列表，採用三欄式 (3-column grid) 圖片卡片設計，並支援絕對定位標籤 (Featured/Category)。
 - 影響檔案：`src/layouts/BaseLayout.astro`、`src/pages/index.astro`、`src/pages/posts/index.astro`
 - 備註：為符合參考設計的視覺呈現所作的排版與 CSS 重構。
+
+### CHG-20260301-07
+- 日期：2026-03-01
+- 階段：Content Cleanup
+- 摘要：移除非本人內容的專案條目 `NeatToolkit`。
+- 影響檔案：`src/content/projects/neat-toolkit.md`、`docs/9004_PROJECT_CHANGELOG.md`
+- 備註：依使用者要求刪除 `2026-03-01` 的該筆 projects 內容。
+
+### CHG-20260301-08
+- 日期：2026-03-01
+- 階段：Content Cleanup
+- 摘要：移除非本人內容的工具條目 `Microsoft for Startups：免費 Azure 額度申請攻略`。
+- 影響檔案：`src/content/tools/azure-credits.md`、`docs/9004_PROJECT_CHANGELOG.md`
+- 備註：依使用者要求刪除 `2026-03-01` 的該筆 tools 內容。
