@@ -46,24 +46,26 @@ const DEFAULT_POST_COVER_ALT = 'lee-chingfon 預設文章封面';
   title="lee-chingfon | AI 幫了誰"
   description="沒有走過不會知道路的盡頭比想像中的更加模糊。"
 >
-  <section class="card stack">
+  <section class="page-header-center">
     <p class="chip">BRAND GUIDELINES STYLE</p>
     <h1 class="hero-title">lee-chingfon</h1>
     <p class="muted">沒有走過不會知道路的盡頭比想像中的更加模糊。</p>
-    <div class="btn-row">
+    <div class="btn-row" style="margin-top: 1.5rem; justify-content: center;">
       <a class="btn btn-primary" href="/posts/">所有的文章</a>
       <a class="btn btn-secondary" href="/projects/">我做的東西</a>
       <a class="btn btn-secondary" href="/tools/">推薦工具</a>
     </div>
-    <p class="status-note">
+    <p class="status-note" style="margin-top: 1rem;">
       Visibility mode: {isPreview ? 'preview/dev includes drafts' : 'production build excludes drafts'}.
     </p>
   </section>
 
-  <section class="stack">
-    <div class="section-head" style="display: flex; justify-content: space-between; align-items: center;">
+  <section class="stack" style="margin-top: 2rem;">
+    <div class="page-header-center" style="margin-bottom: 2rem;">
       <h2 class="section-title">精選文章</h2>
-      <a class="btn btn-secondary" href="/posts/">查看全部主題</a>
+      <div style="margin-top: 1rem;">
+        <a class="btn btn-secondary" href="/posts/">查看全部主題</a>
+      </div>
     </div>
     {
       featuredPosts.length === 0 ? (
