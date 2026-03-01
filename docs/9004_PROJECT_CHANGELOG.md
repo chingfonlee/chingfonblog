@@ -247,3 +247,10 @@
 - 摘要：移除非本人內容的工具條目 `Microsoft for Startups：免費 Azure 額度申請攻略`。
 - 影響檔案：`src/content/tools/azure-credits.md`、`docs/9004_PROJECT_CHANGELOG.md`
 - 備註：依使用者要求刪除 `2026-03-01` 的該筆 tools 內容。
+
+### CHG-20260301-09
+- 日期：2026-03-01
+- 階段：Homepage Copy Update
+- 摘要：更新首頁主文案與分類標籤文案。
+- 影響檔案：`src/pages/index.astro`、`docs/9004_PROJECT_CHANGELOG.md`
+- 備註：依使用者手動調整內容同步記錄。
