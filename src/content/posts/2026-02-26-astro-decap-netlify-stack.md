@@ -1,17 +1,18 @@
 ---
-title: "Astro + Decap + Netlify 最小流程"
-description: "以 Astro 作為 SSG、Decap 作為 CMS、Netlify 作為部署平台的內容工作流範例。"
+title: Astro + Decap + Netlify 最小流程
+description: 以 Astro 作為 SSG、Decap 作為 CMS、Netlify 作為部署平台的內容工作流範例。
+category: ai-practice
 pubDate: 2026-02-26
 dateModified: 2026-02-26
-slug: "astro-decap-netlify-stack"
+slug: astro-decap-netlify-stack
 tags:
   - astro
   - decap
   - netlify
 draft: true
-coverImage: "https://res.cloudinary.com/example/image/upload/v1700000000/blog/astro-decap-cover.jpg"
-coverImageAlt: "Astro、Decap 與 Netlify 的內容發布流程圖"
-canonicalURL: "https://leechingfon.netlify.app/posts/astro-decap-netlify-stack"
+coverImage: https://res.cloudinary.com/dwobro2s5/image/upload/v1772348325/cld-sample-2.jpg
+coverImageAlt: Astro、Decap 與 Netlify 的內容發布流程圖
+canonicalURL: https://leechingfon.netlify.app/posts/astro-decap-netlify-stack
 ---
 
 ## 為什麼使用這個組合
