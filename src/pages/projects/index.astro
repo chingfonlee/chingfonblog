@@ -17,13 +17,9 @@ const projects = (await getCollection('projects', ({ data }) => isPreview || !da
 ---
 
 <BaseLayout title="我做的東西 | lee-chingfon" description="Projects by lee-chingfon.">
-  <section class="card stack">
-    <div class="section-head">
-      <h1 class="section-title">我做的東西</h1>
-      <p class="section-subtitle">
-        從想法到上線，持續累積的作品與產品。
-      </p>
-    </div>
+  <section class="page-header-center">
+    <h1 class="hero-title">我做的東西</h1>
+    <p class="section-subtitle">從想法到上線，持續累積的作品與產品。</p>
   </section>
 
   <section class="stack">
@@ -31,7 +27,7 @@ const projects = (await getCollection('projects', ({ data }) => isPreview || !da
       projects.length === 0 ? (
         <p class="card empty-state">目前還沒有公開的專案。</p>
       ) : (
-        <ul class="clean post-grid">
+        <ul class="clean grid-3">
           {projects.map((item) => (
             <li class="card card-hover stack">
               {item.data.pubDate && (

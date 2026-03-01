@@ -17,13 +17,9 @@ const tools = (await getCollection('tools', ({ data }) => isPreview || !data.dra
 ---
 
 <BaseLayout title="推薦工具 | lee-chingfon" description="Recommended tools by lee-chingfon.">
-  <section class="card stack">
-    <div class="section-head">
-      <h1 class="section-title">推薦工具</h1>
-      <p class="section-subtitle">
-        我實際用過、覺得值得推薦的工具與資源。
-      </p>
-    </div>
+  <section class="page-header-center">
+    <h1 class="hero-title">推薦工具</h1>
+    <p class="section-subtitle">我實際用過、覺得值得推薦的工具與資源。</p>
   </section>
 
   <section class="stack">
@@ -31,7 +27,7 @@ const tools = (await getCollection('tools', ({ data }) => isPreview || !data.dra
       tools.length === 0 ? (
         <p class="card empty-state">目前還沒有推薦的工具。</p>
       ) : (
-        <ul class="clean post-grid">
+        <ul class="clean grid-3">
           {tools.map((item) => (
             <li class="card card-hover stack">
               {item.data.pubDate && (
