@@ -24,6 +24,9 @@ const posts = (await getCollection('posts', ({ data }) => isPreview || !data.dra
 );
 
 const getCategoryLabel = (category: string) => categoryLabelMap[category] ?? '人生思考';
+const DEFAULT_POST_COVER =
+  'https://res.cloudinary.com/dwobro2s5/image/upload/f_auto,q_auto,c_fill,ar_16:9,w_1600/sample';
+const DEFAULT_POST_COVER_ALT = 'lee-chingfon 預設文章封面';
 ---
 
 <BaseLayout title="所有文章 | lee-chingfon" description="分享 AI 實戰、效率系統與人生思考的文章。">
@@ -53,35 +56,30 @@ const getCategoryLabel = (category: string) => categoryLabelMap[category] ?? '�
       ) : (
         <>
           <ul id="post-list" class="clean grid-3">
-            {posts.map((post) => (
-              <li class="card card-hover stack post-item" data-category={post.data.category}>
-                {post.data.coverImage && (
+            {posts.map((post) => {
+              const coverImage = post.data.coverImage ?? DEFAULT_POST_COVER;
+              const coverImageAlt = post.data.coverImageAlt ?? DEFAULT_POST_COVER_ALT;
+
+              return (
+                <li class="card card-hover stack post-item" data-category={post.data.category}>
                   <div class="post-cover">
-                    <img src={post.data.coverImage} alt={post.data.coverImageAlt || ''} loading="lazy" />
+                    <img src={coverImage} alt={coverImageAlt} loading="lazy" />
                     <div class="cover-tags">
                       {post.data.tags.includes('featured') && <span class="category-tag tag-featured">精選</span>}
                       <span class="category-tag">{getCategoryLabel(post.data.category)}</span>
                     </div>
                   </div>
-                )}
-                <!-- If no cover image, just show tags normally to prevent breaking -->
-                {!post.data.coverImage && (
-                  <div class="btn-row">
-                    {post.data.tags.includes('featured') && <span class="category-tag tag-featured">精選</span>}
-                    <span class="category-tag">{getCategoryLabel(post.data.category)}</span>
-                  </div>
-                )}
-                
-                <p class="meta-line" style={post.data.coverImage ? "margin-top: 0.5rem;" : ""}>
-                  {post.data.pubDate.toISOString().slice(0, 10).replace(/-/g, '/')}
-                  {post.data.draft ? ' · draft' : ''}
-                </p>
-                <a class="post-link" href={`/posts/${post.slug}/`}>
-                  <strong>{post.data.title}</strong>
-                </a>
-                <div class="muted">{post.data.description}</div>
-              </li>
-            ))}
+                  <p class="meta-line" style="margin-top: 0.5rem;">
+                    {post.data.pubDate.toISOString().slice(0, 10).replace(/-/g, '/')}
+                    {post.data.draft ? ' · draft' : ''}
+                  </p>
+                  <a class="post-link" href={`/posts/${post.slug}/`}>
+                    <strong>{post.data.title}</strong>
+                  </a>
+                  <div class="muted">{post.data.description}</div>
+                </li>
+              );
+            })}
           </ul>
           <p id="empty-message" class="card empty-state" style="text-align: center;" hidden>此分類目前沒有文章。</p>
         </>

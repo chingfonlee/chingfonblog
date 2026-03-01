@@ -37,6 +37,9 @@ const featuredPostsData = posts.filter((post) => post.data.tags.includes('featur
 const featuredPosts = featuredPostsData.length > 0 ? featuredPostsData.slice(0, 3) : posts.slice(0, 3);
 
 const getCategoryLabel = (category: string) => categoryLabelMap[category] ?? '人生思考';
+const DEFAULT_POST_COVER =
+  'https://res.cloudinary.com/dwobro2s5/image/upload/f_auto,q_auto,c_fill,ar_16:9,w_1600/sample';
+const DEFAULT_POST_COVER_ALT = 'lee-chingfon 預設文章封面';
 ---
 
 <BaseLayout
@@ -67,33 +70,30 @@ const getCategoryLabel = (category: string) => categoryLabelMap[category] ?? '�
         <p class="card empty-state">目前尚未有文章。</p>
       ) : (
         <ul class="clean grid-3">
-          {featuredPosts.map((post) => (
-            <li class="card card-hover stack post-item">
-              {post.data.coverImage && (
+          {featuredPosts.map((post) => {
+            const coverImage = post.data.coverImage ?? DEFAULT_POST_COVER;
+            const coverImageAlt = post.data.coverImageAlt ?? DEFAULT_POST_COVER_ALT;
+
+            return (
+              <li class="card card-hover stack post-item">
                 <div class="post-cover">
-                  <img src={post.data.coverImage} alt={post.data.coverImageAlt || ''} loading="lazy" />
+                  <img src={coverImage} alt={coverImageAlt} loading="lazy" />
                   <div class="cover-tags">
                     {post.data.tags.includes('featured') && <span class="category-tag tag-featured">精選</span>}
                     <span class="category-tag">{getCategoryLabel(post.data.category)}</span>
                   </div>
                 </div>
-              )}
-              {!post.data.coverImage && (
-                <div class="btn-row">
-                  {post.data.tags.includes('featured') && <span class="category-tag tag-featured">精選</span>}
-                  <span class="category-tag">{getCategoryLabel(post.data.category)}</span>
-                </div>
-              )}
-              <p class="meta-line" style={post.data.coverImage ? "margin-top: 0.5rem;" : ""}>
-                {post.data.pubDate.toISOString().slice(0, 10).replace(/-/g, '/')}
-                {post.data.draft ? ' · draft' : ''}
-              </p>
-              <a class="post-link" href={`/posts/${post.slug}/`}>
-                <strong>{post.data.title}</strong>
-              </a>
-              <p class="muted">{post.data.description}</p>
-            </li>
-          ))}
+                <p class="meta-line" style="margin-top: 0.5rem;">
+                  {post.data.pubDate.toISOString().slice(0, 10).replace(/-/g, '/')}
+                  {post.data.draft ? ' · draft' : ''}
+                </p>
+                <a class="post-link" href={`/posts/${post.slug}/`}>
+                  <strong>{post.data.title}</strong>
+                </a>
+                <p class="muted">{post.data.description}</p>
+              </li>
+            );
+          })}
         </ul>
       )
     }

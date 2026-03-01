@@ -91,7 +91,8 @@ collections:
         name: coverImage
         widget: image
         required: false
-        hint: 'Cloudinary URL only. Do not store uploaded content images in repo.'
+        default: https://res.cloudinary.com/dwobro2s5/image/upload/f_auto,q_auto,c_fill,ar_16:9,w_1600/sample
+        hint: 'Cloudinary URL only. Default cover is auto-filled; replace it per post when needed.'
         media_library:
           config:
             multiple: false
@@ -100,6 +101,7 @@ collections:
         name: coverImageAlt
         widget: string
         required: false
+        default: "lee-chingfon 預設文章封面"
 
       - label: Canonical URL
         name: canonicalURL

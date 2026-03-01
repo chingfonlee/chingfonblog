@@ -213,6 +213,13 @@
 - 影響檔案：`public/admin/config.yml`、`docs/9004_PROJECT_CHANGELOG.md`
 - 備註：僅使用前端可公開參數；`api_secret` 不入版控。
 
+### CHG-20260301-06
+- 日期：2026-03-01
+- 階段：Cover Fallback
+- 摘要：導入半自動預設封面：Decap 新文章預設 coverImage/coverImageAlt，前台列表頁缺圖時自動 fallback。
+- 影響檔案：`public/admin/config.yml`、`src/pages/index.astro`、`src/pages/posts/index.astro`、`docs/9004_PROJECT_CHANGELOG.md`
+- 備註：採用 Cloudinary sample 圖作為預設，後續可替換成品牌專用封面 URL。
+
 ### CHG-20260301-03
 - 日期：2026-03-01
 - 階段：Structural Redesign
