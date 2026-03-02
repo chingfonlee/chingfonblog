@@ -275,3 +275,17 @@
 - 摘要：更新首頁主文案與分類標籤文案。
 - 影響檔案：`src/pages/index.astro`、`docs/9004_PROJECT_CHANGELOG.md`
 - 備註：依使用者手動調整內容同步記錄。
+
+### CHG-20260302-01
+- 日期：2026-03-02
+- 階段：Code Refactor
+- 摘要：將分散於多個頁面的分類與 UI 文案抽離到 `src/constants/siteText.ts`，統一由頁面 import 使用。
+- 影響檔案：`src/constants/siteText.ts`、`src/pages/index.astro`、`src/pages/posts/index.astro`、`src/pages/projects/index.astro`、`src/pages/tools/index.astro`、`docs/9004_PROJECT_CHANGELOG.md`
+- 備註：同步收斂 posts 篩選腳本中的分類字串，降低後續維護時的多處修改風險。
+
+### CHG-20260302-02
+- 日期：2026-03-02
+- 階段：SSOT Alignment
+- 摘要：建立分類常數單一來源 `src/constants/postCategories.ts`，並讓 content schema 與文件規範對齊；CMS 設定檔加入 SSOT 註記。
+- 影響檔案：`src/constants/postCategories.ts`、`src/constants/siteText.ts`、`src/content.config.ts`、`public/admin/config.yml`、`docs/2002_CONTENT_MODEL_SPEC.md`、`docs/9004_PROJECT_CHANGELOG.md`
+- 備註：`config.yml` 因格式限制無法直接 import TS，維持手動同步並以註解與規格文件強化治理。

@@ -39,6 +39,8 @@ collections:
       - label: Category
         name: category
         widget: select
+        # SSOT: src/constants/postCategories.ts
+        # Keep default/options aligned with POST_CATEGORY_DEFAULT and POST_CATEGORY_OPTIONS.
         default: life-thinking
         options:
           - label: AI 實戰

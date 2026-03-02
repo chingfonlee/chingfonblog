@@ -18,6 +18,18 @@
 | `coverImageAlt` | 否 | `string` | 有 `coverImage` 時必填 |
 | `canonicalURL` | 否 | `string(url)` | 需要跨站正規化時使用 |
 
+## 分類單一真實來源（SSOT）
+- Canonical source：`src/constants/postCategories.ts`
+- `POST_CATEGORY_VALUES`：分類值清單（schema enum 與後台 select value 需一致）
+- `POST_CATEGORY_OPTIONS`：前台/後台分類選項顯示文案
+- `POST_CATEGORY_DEFAULT`：預設分類值
+- `HOME_CATEGORY_LABELS`：首頁分類標籤文案（可與文章頁不同）
+
+說明：
+- `src/content.config.ts` 必須直接引用 `POST_CATEGORY_VALUES` 與 `POST_CATEGORY_DEFAULT`，避免 enum 漂移。
+- `public/admin/config.yml` 目前無法直接 import TS 常數，需手動同步；檔內已以註解標示 SSOT 路徑。
+- 若新增/調整分類，先改 `src/constants/postCategories.ts`，再同步 `public/admin/config.yml`。
+
 ## projects 與 tools 欄位定義
 | 欄位 | 必填 | 型別 | 規則 |
 | --- | --- | --- | --- |

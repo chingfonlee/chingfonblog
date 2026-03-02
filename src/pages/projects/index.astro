@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { projectsPageText } from '../../constants/siteText';
 
 const isPreview =
   import.meta.env.DEV ||
@@ -16,16 +17,16 @@ const projects = (await getCollection('projects', ({ data }) => isPreview || !da
 );
 ---
 
-<BaseLayout title="我做的東西 | lee-chingfon" description="Projects by lee-chingfon.">
+<BaseLayout title={projectsPageText.pageTitle} description={projectsPageText.pageDescription}>
   <section class="page-header-center">
-    <h1 class="hero-title">我做的東西</h1>
-    <p class="section-subtitle">從想法到上線，持續累積的作品與產品。</p>
+    <h1 class="hero-title">{projectsPageText.heroTitle}</h1>
+    <p class="section-subtitle">{projectsPageText.heroSubtitle}</p>
   </section>
 
   <section class="stack">
     {
       projects.length === 0 ? (
-        <p class="card empty-state">目前還沒有公開的專案。</p>
+        <p class="card empty-state">{projectsPageText.emptyProjects}</p>
       ) : (
         <ul class="clean grid-3">
           {projects.map((item) => (
