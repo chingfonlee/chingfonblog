@@ -1,11 +1,12 @@
 import { defineCollection, z } from 'astro:content';
+import { POST_CATEGORY_DEFAULT, POST_CATEGORY_VALUES } from './constants/postCategories';
 
 const cloudinaryUrl = z
   .string()
   .url()
   .regex(/^https:\/\/res\.cloudinary\.com\//, 'coverImage must be a Cloudinary URL');
 
-const postCategory = z.enum(['ai-practice', 'productivity-system', 'life-thinking']);
+const postCategory = z.enum(POST_CATEGORY_VALUES);
 
 const posts = defineCollection({
   type: 'content',
@@ -15,7 +16,7 @@ const posts = defineCollection({
       description: z.string().min(1),
       pubDate: z.coerce.date(),
       dateModified: z.coerce.date().optional(),
-      category: postCategory.default('life-thinking'),
+      category: postCategory.default(POST_CATEGORY_DEFAULT),
       tags: z.array(z.string().regex(/^[a-z0-9-]+$/)).default([]),
       draft: z.boolean().default(true),
       coverImage: cloudinaryUrl.optional(),
