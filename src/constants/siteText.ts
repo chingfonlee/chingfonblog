@@ -31,9 +31,9 @@ export const homePageText = {
 
 export const postsPageText = {
   pageTitle: '所有文章 | lee-chingfon',
-  pageDescription: '分享 AI 實戰、效率系統與人生思考的文章。',
+  pageDescription: '分享AI翻轉世界系統的思考行動。',
   heroTitle: '所有文章',
-  heroSubtitle: '分享 AI 實戰、效率系統與人生思考的文章',
+  heroSubtitle: '分享AI翻轉世界系統的思考行動',
   filterAllLabel: '全部',
   filterStatusAll: '目前顯示全部文章。',
   filterStatusInvalidCategory: '無效的 category 參數，已回退為全部文章。',
