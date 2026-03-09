@@ -8,7 +8,7 @@ const isPreview =
   process.env.SITE_ENV === 'deploy-preview' ||
   process.env.SITE_ENV === 'branch-deploy';
 
-const projects = (await getCollection('projects', ({ data }) => isPreview || !data.draft)).sort(
+const projects = (await getCollection('projects', ({ data }) => !data.hidden && (isPreview || !data.draft))).sort(
   (a, b) => {
     const aDate = a.data.pubDate ? a.data.pubDate.valueOf() : 0;
     const bDate = b.data.pubDate ? b.data.pubDate.valueOf() : 0;

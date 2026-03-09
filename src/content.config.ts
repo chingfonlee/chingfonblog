@@ -50,6 +50,7 @@ const projects = defineCollection({
     link: z.string().url().optional(),
     pubDate: z.coerce.date().optional(),
     draft: z.boolean().default(false),
+    hidden: z.boolean().default(false),
   }),
 });
 
@@ -61,6 +62,7 @@ const tools = defineCollection({
     link: z.string().url().optional(),
     pubDate: z.coerce.date().optional(),
     draft: z.boolean().default(false),
+    hidden: z.boolean().default(false),
   }),
 });
 

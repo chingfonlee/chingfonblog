@@ -19,7 +19,7 @@ const posts = (await getCollection('posts', ({ data }) => isPreview || !data.dra
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 
-const projects = (await getCollection('projects', ({ data }) => isPreview || !data.draft)).sort(
+const projects = (await getCollection('projects', ({ data }) => !data.hidden && (isPreview || !data.draft))).sort(
   (a, b) => {
     const aDate = a.data.pubDate ? a.data.pubDate.valueOf() : 0;
     const bDate = b.data.pubDate ? b.data.pubDate.valueOf() : 0;
@@ -27,7 +27,7 @@ const projects = (await getCollection('projects', ({ data }) => isPreview || !da
   }
 ).slice(0, 3);
 
-const tools = (await getCollection('tools', ({ data }) => isPreview || !data.draft)).sort(
+const tools = (await getCollection('tools', ({ data }) => !data.hidden && (isPreview || !data.draft))).sort(
   (a, b) => {
     const aDate = a.data.pubDate ? a.data.pubDate.valueOf() : 0;
     const bDate = b.data.pubDate ? b.data.pubDate.valueOf() : 0;
