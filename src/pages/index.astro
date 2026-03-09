@@ -39,53 +39,96 @@ const featuredPostsData = posts.filter((post) => post.data.tags.includes('featur
 const featuredPosts = featuredPostsData.length > 0 ? featuredPostsData.slice(0, 3) : posts.slice(0, 3);
 
 const getCategoryLabel = (category: string) => homeCategoryLabelMap[category] ?? DEFAULT_CATEGORY_LABEL;
+
+const formatDate = (date: Date) => date.toISOString().slice(0, 10).replace(/-/g, '/');
+const latestPostDate = posts[0] ? formatDate(posts[0].data.pubDate) : '尚無文章';
+
+const linkAttrs = (url?: string) => {
+  if (!url) return {};
+  const external = /^https?:\/\//.test(url);
+  return external ? { target: '_blank', rel: 'noreferrer noopener' } : {};
+};
 ---
 
-<BaseLayout
-  title="lee-chingfon | AI 幫了誰"
-  description="沒有走過不會知道路的盡頭比想像中的更加模糊。"
->
-  <section class="page-header-center">
+<BaseLayout title="lee-chingfon | AI 幫了誰" description="沒有走過不會知道路的盡頭比想像中的更加模糊。">
+  <section class="hero-shell fade-in-up delay-1 home-hero">
+    <div class="home-hero-grid">
+      <div>
+        <p class="hero-eyebrow">Editorial Dispatch</p>
+        <h1 class="hero-title">AI 幫了誰，也正在重寫我們看世界的方法</h1>
+        <p class="hero-lead">
+          這裡是持續更新的公開筆記，整理我在 AI 實作、效率系統與行動思考上的真實試驗。
+          不談抽象願景，而是把觀察拆成能落地的做法。
+        </p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="/posts/">立即閱讀文章</a>
+          <a class="button button-ghost" href="/projects/">查看近期專案</a>
+        </div>
+      </div>
 
-    
-
+      <aside class="hero-aside" aria-label="site snapshot">
+        <p class="hero-eyebrow">本週站點快照</p>
+        <ul class="clean hero-stats">
+          <li><span>最新更新</span><strong>{latestPostDate}</strong></li>
+          <li><span>文章</span><strong>{posts.length}</strong></li>
+          <li><span>專案</span><strong>{projects.length}</strong></li>
+          <li><span>工具</span><strong>{tools.length}</strong></li>
+        </ul>
+        {
+          posts.length > 0 ? (
+            <div class="hero-mini-feed">
+              <p class="hero-mini-feed-title">近期文章</p>
+              <ul class="clean">
+                {posts.slice(0, 3).map((post) => (
+                  <li>
+                    <a href={`/posts/${post.slug}/`}>{post.data.title}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null
+        }
+      </aside>
+    </div>
   </section>
 
-  <section class="stack" style="margin-top: 2rem;">
-    <div class="page-header-center" style="margin-bottom: 2rem;">
-      <h2 class="section-title">{homePageText.featuredSectionTitle}</h2>
-      <div style="margin-top: 1rem;">
-        <a class="btn btn-secondary" href="/posts/">{homePageText.featuredSectionAction}</a>
+  <section class="section-shell fade-in-up delay-2">
+    <div class="section-head">
+      <div>
+        <h2 class="section-title">{homePageText.featuredSectionTitle}</h2>
+        <p class="section-subtitle">先讀核心文章，快速建立整體脈絡。</p>
       </div>
+      <a class="button button-ghost" href="/posts/">{homePageText.featuredSectionAction}</a>
     </div>
+
     {
       featuredPosts.length === 0 ? (
-        <p class="card empty-state">{homePageText.emptyPosts}</p>
+        <p class="empty-state">{homePageText.emptyPosts}</p>
       ) : (
-        <ul class="clean grid-3">
+        <ul class="clean collection-grid">
           {featuredPosts.map((post) => {
             const coverImage = post.data.coverImage ?? DEFAULT_POST_COVER;
             const coverImageAlt = post.data.coverImageAlt ?? DEFAULT_POST_COVER_ALT;
 
             return (
-              <li class="card card-hover stack post-item">
-                <div class="post-cover">
+              <li class="entry-card">
+                <div class="entry-media">
                   <img src={coverImage} alt={coverImageAlt} loading="lazy" />
-                  <div class="cover-tags">
-                    {post.data.tags.includes('featured') && (
-                      <span class="category-tag tag-featured">{postsPageText.featuredTag}</span>
-                    )}
+                  <div class="entry-tags">
+                    {post.data.tags.includes('featured') && <span class="tag tag-featured">{postsPageText.featuredTag}</span>}
                     <span class="category-tag">{getCategoryLabel(post.data.category)}</span>
                   </div>
                 </div>
-                <p class="meta-line" style="margin-top: 0.5rem;">
-                  {post.data.pubDate.toISOString().slice(0, 10).replace(/-/g, '/')}
-                  {post.data.draft ? ' · draft' : ''}
-                </p>
-                <a class="post-link" href={`/posts/${post.slug}/`}>
-                  <strong>{post.data.title}</strong>
-                </a>
-                <p class="muted">{post.data.description}</p>
+                <div class="entry-body">
+                  <p class="entry-meta">
+                    {formatDate(post.data.pubDate)}
+                    {post.data.draft ? ' · draft' : ''}
+                  </p>
+                  <a class="entry-link" href={`/posts/${post.slug}/`}>
+                    <h3 class="entry-title">{post.data.title}</h3>
+                  </a>
+                  <p class="entry-description">{post.data.description}</p>
+                </div>
               </li>
             );
           })}
@@ -94,73 +137,196 @@ const getCategoryLabel = (category: string) => homeCategoryLabelMap[category] ??
     }
   </section>
 
-  <section class="stack">
-    <div class="section-head" style="display: flex; justify-content: space-between; align-items: center;">
-      <h2 class="section-title">{homePageText.projectsSectionTitle}</h2>
-      <a class="btn btn-secondary" href="/projects/">{homePageText.projectsSectionAction}</a>
+  <section class="section-shell fade-in-up delay-3">
+    <div class="section-head">
+      <div>
+        <h2 class="section-title">創作與工具</h2>
+        <p class="section-subtitle">作品與工具以同一套卡片語言呈現，瀏覽節奏更一致。</p>
+      </div>
     </div>
-    {
-      projects.length === 0 ? (
-        <p class="card empty-state">{homePageText.emptyProjects}</p>
-      ) : (
-        <ul class="clean grid-3">
-          {projects.map((item) => (
-            <li class="card card-hover stack">
-              {item.data.pubDate && (
-                <p class="meta-line">
-                  {item.data.pubDate.toISOString().slice(0, 10)}
-                  {item.data.draft ? ' · draft' : ''}
-                </p>
-              )}
-              {item.data.link ? (
-                <a class="post-link" href={item.data.link}>
-                  <strong>{item.data.title}</strong>
-                </a>
-              ) : (
-                <div class="post-link">
-                  <strong>{item.data.title}</strong>
-                </div>
-              )}
-              <p class="muted">{item.data.description}</p>
-            </li>
-          ))}
-        </ul>
-      )
-    }
-  </section>
 
-  <section class="stack">
-    <div class="section-head" style="display: flex; justify-content: space-between; align-items: center;">
-      <h2 class="section-title">{homePageText.toolsSectionTitle}</h2>
-      <a class="btn btn-secondary" href="/tools/">{homePageText.toolsSectionAction}</a>
+    <div class="home-dual-grid">
+      <section class="home-panel">
+        <div class="section-head">
+          <h3 class="home-panel-title">{homePageText.projectsSectionTitle}</h3>
+          <a class="button button-ghost" href="/projects/">{homePageText.projectsSectionAction}</a>
+        </div>
+
+        {
+          projects.length === 0 ? (
+            <p class="empty-state">{homePageText.emptyProjects}</p>
+          ) : (
+            <ul class="clean home-list-grid">
+              {projects.map((item) => (
+                <li class="entry-card entry-card-compact">
+                  <div class="entry-body">
+                    {item.data.pubDate && (
+                      <p class="entry-meta">
+                        {formatDate(item.data.pubDate)}
+                        {item.data.draft ? ' · draft' : ''}
+                      </p>
+                    )}
+                    {item.data.link ? (
+                      <a class="entry-link" href={item.data.link} {...linkAttrs(item.data.link)}>
+                        <h3 class="entry-title">{item.data.title}</h3>
+                      </a>
+                    ) : (
+                      <h3 class="entry-title">{item.data.title}</h3>
+                    )}
+                    <p class="entry-description">{item.data.description}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          )
+        }
+      </section>
+
+      <section class="home-panel">
+        <div class="section-head">
+          <h3 class="home-panel-title">{homePageText.toolsSectionTitle}</h3>
+          <a class="button button-ghost" href="/tools/">{homePageText.toolsSectionAction}</a>
+        </div>
+
+        {
+          tools.length === 0 ? (
+            <p class="empty-state">{homePageText.emptyTools}</p>
+          ) : (
+            <ul class="clean home-list-grid">
+              {tools.map((item) => (
+                <li class="entry-card entry-card-compact">
+                  <div class="entry-body">
+                    {item.data.pubDate && (
+                      <p class="entry-meta">
+                        {formatDate(item.data.pubDate)}
+                        {item.data.draft ? ' · draft' : ''}
+                      </p>
+                    )}
+                    {item.data.link ? (
+                      <a class="entry-link" href={item.data.link} {...linkAttrs(item.data.link)}>
+                        <h3 class="entry-title">{item.data.title}</h3>
+                      </a>
+                    ) : (
+                      <h3 class="entry-title">{item.data.title}</h3>
+                    )}
+                    <p class="entry-description">{item.data.description}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          )
+        }
+      </section>
     </div>
-    {
-      tools.length === 0 ? (
-        <p class="card empty-state">{homePageText.emptyTools}</p>
-      ) : (
-        <ul class="clean grid-3">
-          {tools.map((item) => (
-            <li class="card card-hover stack">
-              {item.data.pubDate && (
-                <p class="meta-line">
-                  {item.data.pubDate.toISOString().slice(0, 10)}
-                  {item.data.draft ? ' · draft' : ''}
-                </p>
-              )}
-              {item.data.link ? (
-                <a class="post-link" href={item.data.link}>
-                  <strong>{item.data.title}</strong>
-                </a>
-              ) : (
-                <div class="post-link">
-                  <strong>{item.data.title}</strong>
-                </div>
-              )}
-              <p class="muted">{item.data.description}</p>
-            </li>
-          ))}
-        </ul>
-      )
-    }
   </section>
 </BaseLayout>
+
+<style>
+  .home-hero-grid {
+    display: grid;
+    grid-template-columns: 1.65fr minmax(240px, 0.95fr);
+    gap: clamp(1rem, 2.4vw, 1.8rem);
+    align-items: start;
+  }
+
+  .hero-aside {
+    border: 1px solid color-mix(in oklab, var(--edge) 88%, white 12%);
+    border-radius: var(--radius-md);
+    padding: 0.9rem 0.95rem;
+    background: color-mix(in oklab, var(--paper) 84%, white 16%);
+    box-shadow: var(--shadow-soft);
+    display: grid;
+    gap: 0.8rem;
+  }
+
+  .hero-stats {
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  .hero-stats li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.8rem;
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+  }
+
+  .hero-stats strong {
+    color: var(--ink);
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .hero-mini-feed {
+    border-top: 1px dashed color-mix(in oklab, var(--edge) 80%, white 20%);
+    padding-top: 0.7rem;
+  }
+
+  .hero-mini-feed-title {
+    margin: 0 0 0.45rem;
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .hero-mini-feed ul {
+    display: grid;
+    gap: 0.35rem;
+  }
+
+  .hero-mini-feed a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px dashed transparent;
+    transition: border-color 220ms ease;
+  }
+
+  .hero-mini-feed a:hover {
+    border-color: color-mix(in oklab, var(--brand) 55%, var(--ink-soft));
+  }
+
+  .home-dual-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(1rem, 1.8vw, 1.4rem);
+  }
+
+  .home-panel {
+    display: grid;
+    gap: 0.9rem;
+  }
+
+  .home-panel-title {
+    margin: 0;
+    font-size: clamp(1.22rem, 2vw, 1.6rem);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+
+  .home-list-grid {
+    display: grid;
+    gap: 0.85rem;
+  }
+
+  .entry-card-compact .entry-body {
+    gap: 0.62rem;
+    padding: 0.95rem 1rem 1rem;
+  }
+
+  .entry-card-compact .entry-title {
+    font-size: 1.04rem;
+  }
+
+  @media (max-width: 980px) {
+    .home-hero-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .home-dual-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

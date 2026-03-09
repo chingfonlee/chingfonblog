@@ -31,7 +31,7 @@ export const homePageText = {
 
 export const postsPageText = {
   pageTitle: '所有文章 | lee-chingfon',
-  pageDescription: '分享AI翻轉世界系統的思考行動。',
+  pageDescription: '收錄 AI 實作、效率系統與行動思考的長文筆記。',
   heroTitle: '所有文章',
   heroSubtitle: '分享AI翻轉世界系統的思考行動',
   filterAllLabel: '全部',
@@ -44,7 +44,7 @@ export const postsPageText = {
 
 export const projectsPageText = {
   pageTitle: '我做的東西 | lee-chingfon',
-  pageDescription: 'Projects by lee-chingfon.',
+  pageDescription: '從想法到上線的公開專案與產品實作。',
   heroTitle: '我做的東西',
   heroSubtitle: '從想法到上線，持續累積的作品與產品。',
   emptyProjects: '目前還沒有公開的專案。',
@@ -52,7 +52,7 @@ export const projectsPageText = {
 
 export const toolsPageText = {
   pageTitle: '推薦工具 | lee-chingfon',
-  pageDescription: 'Recommended tools by lee-chingfon.',
+  pageDescription: '日常實戰中值得長期使用的工具與資源。',
   heroTitle: '推薦工具',
   heroSubtitle: '我實際用過、覺得值得推薦的工具與資源。',
   emptyTools: '目前還沒有推薦的工具。',

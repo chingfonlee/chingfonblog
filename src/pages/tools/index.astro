@@ -15,38 +15,45 @@ const tools = (await getCollection('tools', ({ data }) => !data.hidden && (isPre
     return bDate - aDate;
   }
 );
+
+const linkAttrs = (url?: string) => {
+  if (!url) return {};
+  const external = /^https?:\/\//.test(url);
+  return external ? { target: '_blank', rel: 'noreferrer noopener' } : {};
+};
 ---
 
 <BaseLayout title={toolsPageText.pageTitle} description={toolsPageText.pageDescription}>
-  <section class="page-header-center">
+  <section class="hero-shell fade-in-up delay-1">
+    <p class="hero-eyebrow">Tool Stack</p>
     <h1 class="hero-title">{toolsPageText.heroTitle}</h1>
-    <p class="section-subtitle">{toolsPageText.heroSubtitle}</p>
+    <p class="hero-lead">{toolsPageText.heroSubtitle}</p>
   </section>
 
-  <section class="stack">
+  <section class="section-shell fade-in-up delay-2">
     {
       tools.length === 0 ? (
-        <p class="card empty-state">{toolsPageText.emptyTools}</p>
+        <p class="empty-state">{toolsPageText.emptyTools}</p>
       ) : (
-        <ul class="clean grid-3">
+        <ul class="clean collection-grid">
           {tools.map((item) => (
-            <li class="card card-hover stack">
-              {item.data.pubDate && (
-                <p class="meta-line">
-                  {item.data.pubDate.toISOString().slice(0, 10)}
-                  {item.data.draft ? ' · draft' : ''}
-                </p>
-              )}
-              {item.data.link ? (
-                <a class="post-link" href={item.data.link}>
-                  <strong>{item.data.title}</strong>
-                </a>
-              ) : (
-                <div class="post-link">
-                  <strong>{item.data.title}</strong>
-                </div>
-              )}
-              <div class="muted">{item.data.description}</div>
+            <li class="entry-card">
+              <div class="entry-body">
+                {item.data.pubDate && (
+                  <p class="entry-meta">
+                    {item.data.pubDate.toISOString().slice(0, 10)}
+                    {item.data.draft ? ' · draft' : ''}
+                  </p>
+                )}
+                {item.data.link ? (
+                  <a class="entry-link" href={item.data.link} {...linkAttrs(item.data.link)}>
+                    <h2 class="entry-title">{item.data.title}</h2>
+                  </a>
+                ) : (
+                  <h2 class="entry-title">{item.data.title}</h2>
+                )}
+                <p class="entry-description">{item.data.description}</p>
+              </div>
             </li>
           ))}
         </ul>
