@@ -9,7 +9,7 @@ tags:
   - astro
   - decap
   - netlify
-draft: true
+draft: false
 coverImage: https://res.cloudinary.com/dwobro2s5/image/upload/v1772348325/cld-sample-2.jpg
 coverImageAlt: Astro、Decap 與 Netlify 的內容發布流程圖
 canonicalURL: https://leechingfon.netlify.app/posts/astro-decap-netlify-stack

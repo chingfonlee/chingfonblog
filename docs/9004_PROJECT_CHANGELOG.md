@@ -289,3 +289,10 @@
 - 摘要：建立分類常數單一來源 `src/constants/postCategories.ts`，並讓 content schema 與文件規範對齊；CMS 設定檔加入 SSOT 註記。
 - 影響檔案：`src/constants/postCategories.ts`、`src/constants/siteText.ts`、`src/content.config.ts`、`public/admin/config.yml`、`docs/2002_CONTENT_MODEL_SPEC.md`、`docs/9004_PROJECT_CHANGELOG.md`
 - 備註：`config.yml` 因格式限制無法直接 import TS，維持手動同步並以註解與規格文件強化治理。
+
+### CHG-20260309-01
+- 日期：2026-03-09
+- 階段：Tooling / Content Collections
+- 摘要：固定 WSL 預設 Node 20，並降低空 `projects/tools` collection 的建置提示噪音（不影響前台顯示行為）。
+- 影響檔案：`~/.bashrc`、`src/content.config.ts`、`src/pages/index.astro`、`src/pages/projects/index.astro`、`src/pages/tools/index.astro`、`src/content/projects/placeholder.md`、`src/content/tools/placeholder.md`、`docs/9014_WSL_NODE20_COLLECTION_NOISE_PROGRESS.md`、`docs/9004_PROJECT_CHANGELOG.md`
+- 備註：`npm run validate:local` 已通過，`projects/tools` 空集合提示已消失。

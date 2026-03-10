@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { DEFAULT_CATEGORY_LABEL, postCategoryLabelMap, postsPageText } from '../../constants/siteText';
 
 export async function getStaticPaths() {
   const isPreview =
@@ -15,30 +16,38 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
+
+const categoryLabel = postCategoryLabelMap[entry.data.category] ?? DEFAULT_CATEGORY_LABEL;
+const formatDate = (date: Date) => date.toISOString().slice(0, 10).replace(/-/g, '/');
 ---
 
 <BaseLayout title={`${entry.data.title} | lee-chingfon`} description={entry.data.description}>
-  <article class="card stack">
-    <p class="muted">
-      {entry.data.pubDate.toISOString().slice(0, 10)}
-      {entry.data.draft ? ' · draft' : ''}
-    </p>
-    <h1>{entry.data.title}</h1>
-    <p>{entry.data.description}</p>
+  <section class="article-shell fade-in-up delay-1">
+    <header class="article-header">
+      <div class="filter-wrap" style="justify-content: flex-start;">
+        <a class="button button-ghost" href="/posts/">回到文章列表</a>
+        <span class="tag">{categoryLabel}</span>
+        {entry.data.tags.includes('featured') && <span class="tag tag-featured">{postsPageText.featuredTag}</span>}
+      </div>
+      <p class="entry-meta">
+        {formatDate(entry.data.pubDate)}
+        {entry.data.draft ? ' · draft' : ''}
+      </p>
+      <h1>{entry.data.title}</h1>
+      <p class="hero-lead" style="margin-top: 0;">{entry.data.description}</p>
+    </header>
+
     {
       entry.data.coverImage ? (
-        <figure>
-          <img
-            src={entry.data.coverImage}
-            alt={entry.data.coverImageAlt ?? ''}
-            style="width: 100%; border-radius: 12px;"
-          />
-          {entry.data.coverImageAlt ? <figcaption class="muted">{entry.data.coverImageAlt}</figcaption> : null}
+        <figure class="article-cover">
+          <img src={entry.data.coverImage} alt={entry.data.coverImageAlt ?? ''} loading="lazy" />
+          {entry.data.coverImageAlt ? <figcaption>{entry.data.coverImageAlt}</figcaption> : null}
         </figure>
       ) : null
     }
+
     <div class="prose">
       <Content />
     </div>
-  </article>
+  </section>
 </BaseLayout>
